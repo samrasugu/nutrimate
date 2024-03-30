@@ -30,6 +30,7 @@ linter:
     empty_statements: true
     prefer_interpolation_to_compose_strings: true
     camel_case_types: true
+    file_names: true
 
 # Additional information about this file can be found at
 # https://dart.dev/guides/language/analysis-options
