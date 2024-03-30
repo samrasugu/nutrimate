@@ -1,0 +1,1 @@
+const String loginEmailSvgPath = 'assets/images/sign_in_email.svg';
