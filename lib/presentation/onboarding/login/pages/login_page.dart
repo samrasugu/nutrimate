@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:nutrimate/domain/core/value_objects/app_strings.dart';
 import 'package:nutrimate/domain/core/value_objects/asset_strings.dart';
+import 'package:nutrimate/presentation/core/theme/theme.dart';
 import 'package:nutrimate/presentation/global/spaces.dart';
+import 'package:nutrimate/presentation/global/text_themes.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -25,7 +27,13 @@ class LoginPage extends StatelessWidget {
                     ),
                   ),
                   smallVerticalSizedBox,
-                  const Text(signInText),
+                  Text(
+                    signInText,
+                    style: boldSize24Text(
+                      AppColors.blackColor,
+                    ),
+                  ),
+                  smallVerticalSizedBox,
                 ],
               ),
             ),
