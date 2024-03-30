@@ -1,43 +1,104 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:nutrimate/domain/core/value_objects/app_strings.dart';
 import 'package:nutrimate/domain/core/value_objects/asset_strings.dart';
 import 'package:nutrimate/presentation/core/theme/theme.dart';
+import 'package:nutrimate/presentation/core/widgets/custom_button.dart';
+import 'package:nutrimate/presentation/core/widgets/custom_text_field.dart';
 import 'package:nutrimate/presentation/global/spaces.dart';
 import 'package:nutrimate/presentation/global/text_themes.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
+
+  @override
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Column(
-          children: <Widget>[
-            Form(
-              child: Column(
-                children: <Widget>[
-                  largeVerticalSizedBox,
-                  Center(
-                    child: SvgPicture.asset(
-                      loginEmailSvgPath,
-                      height: 300,
-                      width: 300,
-                    ),
+      backgroundColor: AppColors.backgroundColor,
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20.0),
+          child: SingleChildScrollView(
+            child: Column(
+              children: <Widget>[
+                Form(
+                  key: _formKey,
+                  child: Column(
+                    children: <Widget>[
+                      largeVerticalSizedBox,
+                      Center(
+                        child: SvgPicture.asset(
+                          loginEmailSvgPath,
+                          height: 300,
+                          width: 300,
+                        ),
+                      ),
+                      smallVerticalSizedBox,
+                      Text(
+                        signInText,
+                        style: boldSize24Text(
+                          AppColors.blackColor,
+                        ),
+                      ),
+                      largeVerticalSizedBox,
+                      CustomTextField(
+                        controller: emailController,
+                        hintText: emailString,
+                        borderColor: AppColors.primaryColor,
+                        focusedBorderColor: Colors.transparent,
+                        inputFormatters: <TextInputFormatter>[
+                          FilteringTextInputFormatter.deny(
+                            RegExp(r'\s'),
+                          ),
+                        ],
+                      ),
+                      largeVerticalSizedBox,
+                      CustomTextField(
+                        controller: passwordController,
+                        hintText: passwordString,
+                        obscureText: true,
+                        borderColor: AppColors.primaryColor,
+                        focusedBorderColor: Colors.transparent,
+                        suffixIcon: const Icon(
+                          Icons.visibility,
+                          color: AppColors.greyTextColor,
+                        ),
+                        inputFormatters: <TextInputFormatter>[
+                          FilteringTextInputFormatter.deny(
+                            RegExp(r'\s'),
+                          ),
+                        ],
+                      ),
+                      size70VerticalSizedBox,
+                      SizedBox(
+                        width: double.infinity,
+                        height: 50,
+                        child: CustomButton(
+                          fillColor: AppColors.primaryColor,
+                          customBorderRadius: 20,
+                          text: signInText,
+                          onPressed: () {
+                            if (_formKey.currentState!.validate()) {}
+                          },
+                        ),
+                      ),
+                    ],
                   ),
-                  smallVerticalSizedBox,
-                  Text(
-                    signInText,
-                    style: boldSize24Text(
-                      AppColors.blackColor,
-                    ),
-                  ),
-                  smallVerticalSizedBox,
-                ],
-              ),
+                ),
+              ],
             ),
-          ],
+          ),
         ),
       ),
     );
