@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nutrimate/presentation/home/pages/home_page.dart';
 import 'package:nutrimate/presentation/onboarding/login/pages/login_page.dart';
+import 'package:nutrimate/presentation/onboarding/signup/pages/sign_up_page.dart';
 import 'package:nutrimate/presentation/router/routes.dart';
 
 class RouteGenerator {
@@ -12,6 +13,11 @@ class RouteGenerator {
         return MaterialPageRoute<HomePage>(
           builder: (_) => const HomePage(),
           settings: const RouteSettings(name: 'Home Page'),
+        );
+      case Routes.signup:
+        return MaterialPageRoute<SignUpPage>(
+          builder: (_) => const SignUpPage(),
+          settings: const RouteSettings(name: 'SignUp Page'),
         );
       default:
         return MaterialPageRoute<LoginPage>(

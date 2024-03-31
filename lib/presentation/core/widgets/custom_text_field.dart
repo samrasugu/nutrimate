@@ -65,7 +65,7 @@ class CustomTextField extends StatelessWidget {
           gapPadding: 4.0,
           borderRadius: const BorderRadius.all(
             Radius.circular(
-              20,
+              25,
             ),
           ),
         ),
@@ -76,7 +76,7 @@ class CustomTextField extends StatelessWidget {
           gapPadding: 4.0,
           borderRadius: BorderRadius.all(
             Radius.circular(
-              20,
+              25,
             ),
           ),
         ),
@@ -86,7 +86,7 @@ class CustomTextField extends StatelessWidget {
           ),
           borderRadius: const BorderRadius.all(
             Radius.circular(
-              20,
+              25,
             ),
           ),
         ),

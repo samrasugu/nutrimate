@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nutrimate/presentation/core/theme/theme.dart';
-import 'package:nutrimate/presentation/onboarding/login/pages/login_page.dart';
+import 'package:nutrimate/presentation/onboarding/signup/pages/sign_up_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
       title: 'NutriMate',
       debugShowCheckedModeBanner: false,
       theme: AppTheme.getTheme(),
-      home: const LoginPage(),
+      home: const SignUpPage(),
     );
   }
 }
