@@ -186,6 +186,11 @@ TextStyle veryBoldSize18Text([Color? color]) => TextStyle(
       color: color,
       fontSize: 18,
     );
+TextStyle normalSize18Text([Color? color]) => TextStyle(
+      fontWeight: FontWeight.w400,
+      color: color,
+      fontSize: 18,
+    );
 
 //size17
 TextStyle veryBoldSize17Text([Color? color]) => TextStyle(

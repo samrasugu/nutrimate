@@ -28,7 +28,7 @@ class _LoginPageState extends State<LoginPage> {
       backgroundColor: AppColors.backgroundColor,
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20.0),
+          padding: const EdgeInsets.symmetric(horizontal: 25.0),
           child: SingleChildScrollView(
             child: Column(
               children: <Widget>[
