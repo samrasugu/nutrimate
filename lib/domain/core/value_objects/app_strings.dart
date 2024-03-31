@@ -28,3 +28,12 @@ const String introPageTwoDesc =
 
 const String introPageThreeText = 'Personalized Meals';
 const String introPageThreeDesc = 'Get meal plans tailored to you';
+
+// complete profile
+const String fillFieldsText =
+    'Please fill the fields below as accurate as possible';
+const String genderText = 'Gender';
+const String ageText = 'Age';
+const String weightText = 'Weight';
+const String heightText = 'Height';
+const String selectString = 'Select';

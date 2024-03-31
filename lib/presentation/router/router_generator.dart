@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nutrimate/presentation/home/pages/home_page.dart';
+import 'package:nutrimate/presentation/onboarding/complete_profile/pages/set_basic_info_page.dart';
 import 'package:nutrimate/presentation/onboarding/login/pages/login_page.dart';
 import 'package:nutrimate/presentation/onboarding/onboarding_intro/pages/onboarding_intro_page.dart';
 import 'package:nutrimate/presentation/onboarding/select_onboarding/pages/select_onboarding_page.dart';
@@ -30,6 +31,11 @@ class RouteGenerator {
         return MaterialPageRoute<OnboardingIntroPage>(
           builder: (_) => const OnboardingIntroPage(),
           settings: const RouteSettings(name: 'Onboarding Intro Page'),
+        );
+      case Routes.setBasicInfo:
+        return MaterialPageRoute<SetBasicInfoPage>(
+          builder: (_) => const SetBasicInfoPage(),
+          settings: const RouteSettings(name: 'Set Basic Info Page'),
         );
       default:
         return MaterialPageRoute<LoginPage>(

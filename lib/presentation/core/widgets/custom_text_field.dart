@@ -52,9 +52,9 @@ class CustomTextField extends StatelessWidget {
         prefixIcon: prefixIcon,
         suffixIcon: suffixIcon,
         contentPadding: EdgeInsetsGeometry.lerp(
-          const EdgeInsets.all(17),
-          const EdgeInsets.all(17),
-          17,
+          const EdgeInsets.all(10),
+          const EdgeInsets.all(10),
+          10,
         ),
         hintStyle: const TextStyle(fontSize: 16),
         labelText: labelText,
