@@ -7,3 +7,5 @@ const String googleIconSvgPath = 'assets/icons/google_icon.svg';
 const String introScreenOneImagePath = 'assets/images/onboarding_one.png';
 const String introScreenTwoImagePath = 'assets/images/onboarding_two.png';
 const String introScreenThreeImagePath = 'assets/images/onboarding_three.png';
+
+const String backButtonSvgPath = 'assets/icons/chevron_back.svg';

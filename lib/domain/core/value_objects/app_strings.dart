@@ -37,3 +37,5 @@ const String ageText = 'Age';
 const String weightText = 'Weight';
 const String heightText = 'Height';
 const String selectString = 'Select';
+const String skipText = 'Skip';
+const String continueText = 'Continue';

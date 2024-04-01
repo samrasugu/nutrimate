@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:nutrimate/application/core/services/utils.dart';
 import 'package:nutrimate/domain/core/value_objects/app_strings.dart';
 import 'package:nutrimate/presentation/core/theme/theme.dart';
+import 'package:nutrimate/presentation/core/widgets/custom_app_bar.dart';
+import 'package:nutrimate/presentation/core/widgets/custom_button.dart';
 import 'package:nutrimate/presentation/core/widgets/custom_select_field.dart';
 import 'package:nutrimate/presentation/core/widgets/custom_text_field.dart';
 import 'package:nutrimate/presentation/global/spaces.dart';
@@ -23,119 +25,153 @@ class _SetBasicInfoPageState extends State<SetBasicInfoPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(25.0),
-          child: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Text(
-                  fillFieldsText,
-                  style: boldSize20Text(
-                    AppColors.blackColor,
-                  ),
-                ),
-                largeVerticalSizedBox,
-
-                // gender
-                Text(
-                  genderText,
-                  style: mediumSize20Text(
-                    AppColors.blackColor,
-                  ),
-                ),
-                smallVerticalSizedBox,
-                CustomSelectField(
-                  items: genderList(),
-                  hintText: selectString,
-                  decoration: InputDecoration(
-                    contentPadding: EdgeInsetsGeometry.lerp(
-                      const EdgeInsets.all(10),
-                      const EdgeInsets.all(10.5),
-                      10,
-                    ),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(25),
-                      borderSide: const BorderSide(
-                        color: AppColors.primaryColor,
-                      ),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(25),
-                      borderSide: const BorderSide(
-                        color: AppColors.primaryColor,
-                      ),
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(25),
-                      borderSide: const BorderSide(
-                        color: AppColors.primaryColor,
-                      ),
-                    ),
-                    errorBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(25),
-                      borderSide: const BorderSide(
-                        color: AppColors.redColor,
-                      ),
-                    ),
-                    focusedErrorBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(25),
-                      borderSide: const BorderSide(
-                        color: AppColors.redColor,
-                      ),
-                    ),
-                  ),
-                  onChanged: (String? newValue) {},
-                ),
-                largeVerticalSizedBox,
-
-                // age
-                Text(
-                  ageText,
-                  style: mediumSize20Text(
-                    AppColors.blackColor,
-                  ),
-                ),
-                smallVerticalSizedBox,
-                CustomTextField(
-                  controller: ageController,
-                  hintText: '',
-                  borderColor: AppColors.primaryColor,
-                ),
-                largeVerticalSizedBox,
-
-                // weight
-                Text(
-                  '$weightText (kg)',
-                  style: mediumSize20Text(
-                    AppColors.blackColor,
-                  ),
-                ),
-                smallVerticalSizedBox,
-                CustomTextField(
-                  controller: weightController,
-                  hintText: '',
-                  borderColor: AppColors.primaryColor,
-                ),
-                largeVerticalSizedBox,
-
-                // height
-                Text(
-                  '$heightText (cm)',
-                  style: mediumSize20Text(
-                    AppColors.blackColor,
-                  ),
-                ),
-                smallVerticalSizedBox,
-                CustomTextField(
-                  controller: heightController,
-                  hintText: '',
-                  borderColor: AppColors.primaryColor,
-                ),
-                largeVerticalSizedBox,
-              ],
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(60),
+        child: CustomAppBar(
+          showBackButton: true,
+          trailingWidget: Text(
+            skipText,
+            style: normalSize18Text(
+              AppColors.primaryColor,
             ),
+          ),
+        ),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 25.0),
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Text(
+                fillFieldsText,
+                style: boldSize20Text(
+                  AppColors.blackColor,
+                ),
+              ),
+              largeVerticalSizedBox,
+
+              // gender
+              Text(
+                genderText,
+                style: mediumSize20Text(
+                  AppColors.blackColor,
+                ),
+              ),
+              smallVerticalSizedBox,
+              CustomSelectField(
+                items: genderList(),
+                hintText: selectString,
+                decoration: InputDecoration(
+                  contentPadding: EdgeInsetsGeometry.lerp(
+                    const EdgeInsets.all(10),
+                    const EdgeInsets.all(10.5),
+                    10,
+                  ),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(25),
+                    borderSide: const BorderSide(
+                      color: AppColors.primaryColor,
+                    ),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(25),
+                    borderSide: const BorderSide(
+                      color: AppColors.primaryColor,
+                    ),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(25),
+                    borderSide: const BorderSide(
+                      color: AppColors.primaryColor,
+                    ),
+                  ),
+                  errorBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(25),
+                    borderSide: const BorderSide(
+                      color: AppColors.redColor,
+                    ),
+                  ),
+                  focusedErrorBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(25),
+                    borderSide: const BorderSide(
+                      color: AppColors.redColor,
+                    ),
+                  ),
+                ),
+                onChanged: (String? newValue) {},
+              ),
+              largeVerticalSizedBox,
+
+              // age
+              Text(
+                ageText,
+                style: mediumSize20Text(
+                  AppColors.blackColor,
+                ),
+              ),
+              smallVerticalSizedBox,
+              CustomTextField(
+                controller: ageController,
+                hintText: '',
+                borderColor: AppColors.primaryColor,
+              ),
+              largeVerticalSizedBox,
+
+              // weight
+              Text(
+                '$weightText (kg)',
+                style: mediumSize20Text(
+                  AppColors.blackColor,
+                ),
+              ),
+              smallVerticalSizedBox,
+              CustomTextField(
+                controller: weightController,
+                hintText: '',
+                borderColor: AppColors.primaryColor,
+              ),
+              largeVerticalSizedBox,
+
+              // height
+              Text(
+                '$heightText (cm)',
+                style: mediumSize20Text(
+                  AppColors.blackColor,
+                ),
+              ),
+              smallVerticalSizedBox,
+              CustomTextField(
+                controller: heightController,
+                hintText: '',
+                borderColor: AppColors.primaryColor,
+              ),
+              size100VerticalSizedBox,
+              SizedBox(
+                height: 48,
+                width: double.infinity,
+                child: CustomButton(
+                  onPressed: (){},
+                  fillColor: AppColors.primaryColor,
+                  customBorderRadius: 25,
+                  customChild: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Text(
+                        continueText,
+                        style: mediumSize20Text(
+                          AppColors.whiteColor,
+                        ),
+                      ),
+                      const Icon(
+                        Icons.chevron_right_sharp,
+                        color: AppColors.whiteColor,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
           ),
         ),
       ),
