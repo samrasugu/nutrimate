@@ -39,3 +39,9 @@ const String heightText = 'Height';
 const String selectString = 'Select';
 const String skipText = 'Skip';
 const String continueText = 'Continue';
+
+const String howManyMealsQuestion = 'How many times a day do you usually eat?';
+const String chooseMoreSuitableOption =
+    'Choose the most suitable option for you';
+
+const String currentLocationQuestion = 'What is your current location?';

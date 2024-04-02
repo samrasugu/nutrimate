@@ -5,6 +5,7 @@ class Routes {
   static const String selectOnboarding = '/selectOnboarding';
   static const String onboardingIntro = '/onboardingIntro';
   static const String setBasicInfo = '/setBasicInfo';
+  static const String setMealTimes = '/setMealTimes';
 
   static const String home = '/home';
   static const String profile = '/profile';

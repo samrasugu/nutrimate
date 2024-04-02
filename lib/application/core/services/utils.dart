@@ -15,3 +15,9 @@ List<String> genderList() {
 String capitalize(String input) {
   return '${input[0].toUpperCase()}${input.substring(1).toLowerCase()}';
 }
+
+List<String> mealTimes = <String>[
+  '3 times a day(breakfast, lunch, dinner)',
+  '4-5 times a day(adding snacks)',
+  'I don\'t have a specific schedule',
+];

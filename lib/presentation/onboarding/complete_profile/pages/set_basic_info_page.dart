@@ -8,6 +8,7 @@ import 'package:nutrimate/presentation/core/widgets/custom_select_field.dart';
 import 'package:nutrimate/presentation/core/widgets/custom_text_field.dart';
 import 'package:nutrimate/presentation/global/spaces.dart';
 import 'package:nutrimate/presentation/global/text_themes.dart';
+import 'package:nutrimate/presentation/router/routes.dart';
 
 class SetBasicInfoPage extends StatefulWidget {
   const SetBasicInfoPage({super.key});
@@ -151,7 +152,9 @@ class _SetBasicInfoPageState extends State<SetBasicInfoPage> {
                 height: 48,
                 width: double.infinity,
                 child: CustomButton(
-                  onPressed: (){},
+                  onPressed: () {
+                    Navigator.pushNamed(context, Routes.setMealTimes);
+                  },
                   fillColor: AppColors.primaryColor,
                   customBorderRadius: 25,
                   customChild: Row(

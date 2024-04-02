@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nutrimate/presentation/home/pages/home_page.dart';
 import 'package:nutrimate/presentation/onboarding/complete_profile/pages/set_basic_info_page.dart';
+import 'package:nutrimate/presentation/onboarding/complete_profile/pages/set_meal_times_page.dart';
 import 'package:nutrimate/presentation/onboarding/login/pages/login_page.dart';
 import 'package:nutrimate/presentation/onboarding/onboarding_intro/pages/onboarding_intro_page.dart';
 import 'package:nutrimate/presentation/onboarding/select_onboarding/pages/select_onboarding_page.dart';
@@ -36,6 +37,11 @@ class RouteGenerator {
         return MaterialPageRoute<SetBasicInfoPage>(
           builder: (_) => const SetBasicInfoPage(),
           settings: const RouteSettings(name: 'Set Basic Info Page'),
+        );
+      case Routes.setMealTimes:
+        return MaterialPageRoute<SetMealTimesPage>(
+          builder: (_) => const SetMealTimesPage(),
+          settings: const RouteSettings(name: 'Set Preferences Page'),
         );
       default:
         return MaterialPageRoute<LoginPage>(
