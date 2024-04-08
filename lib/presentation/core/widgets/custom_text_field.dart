@@ -18,6 +18,10 @@ class CustomTextField extends StatelessWidget {
   final FormFieldValidator<String>? validator;
   final TextInputType? keyboardType;
   final Key? formFieldKey;
+  final void Function()? onTap;
+  final void Function(String)? onFieldSubmitted;
+  final void Function(String)? onChanged;
+
   const CustomTextField({
     super.key,
     required this.controller,
@@ -36,6 +40,9 @@ class CustomTextField extends StatelessWidget {
     this.validator,
     this.keyboardType,
     this.formFieldKey,
+    this.onTap,
+    this.onFieldSubmitted,
+    this.onChanged,
   })  : enabled = enabled ?? true,
         obscureText = obscureText ?? false;
 
@@ -47,6 +54,15 @@ class CustomTextField extends StatelessWidget {
       initialValue: initialValue,
       keyboardType: keyboardType,
       key: formFieldKey,
+      onTap: () {
+        onTap?.call;
+      },
+      onFieldSubmitted: (String value) {
+        onFieldSubmitted?.call;
+      },
+      onChanged: (String value) {
+        onChanged?.call;
+      },
       decoration: InputDecoration(
         hintText: hintText,
         prefixIcon: prefixIcon,

@@ -55,7 +55,9 @@ class SetMealTimesPage extends StatelessWidget {
                 height: 48,
                 width: double.infinity,
                 child: CustomButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushNamed(context, Routes.setLocationAndPreferences);
+                  },
                   fillColor: AppColors.primaryColor,
                   customBorderRadius: 25,
                   customChild: Row(

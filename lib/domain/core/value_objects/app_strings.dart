@@ -45,3 +45,7 @@ const String chooseMoreSuitableOption =
     'Choose the most suitable option for you';
 
 const String currentLocationQuestion = 'What is your current location?';
+const String specifyLocationText =
+    'Specifying your locality will enable us to provide you with readily available foods';
+const String dietaryPreferencesQuestion = 'Do you have any dietary preferences?';
+const String searchText = 'Search';
