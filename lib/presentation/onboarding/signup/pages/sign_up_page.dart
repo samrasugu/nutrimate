@@ -8,6 +8,7 @@ import 'package:nutrimate/presentation/core/widgets/custom_button.dart';
 import 'package:nutrimate/presentation/core/widgets/custom_text_field.dart';
 import 'package:nutrimate/presentation/global/spaces.dart';
 import 'package:nutrimate/presentation/global/text_themes.dart';
+import 'package:nutrimate/presentation/router/routes.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({super.key});
@@ -113,9 +114,10 @@ class _SignUpPageState extends State<SignUpPage> {
                         child: CustomButton(
                           fillColor: AppColors.primaryColor,
                           customBorderRadius: 20,
-                          text: signInText,
+                          text: signUpText,
                           onPressed: () {
-                            if (_formKey.currentState!.validate()) {}
+                            // if (_formKey.currentState!.validate()) {}
+                            Navigator.of(context).pushNamed(Routes.setBasicInfo);
                           },
                         ),
                       ),

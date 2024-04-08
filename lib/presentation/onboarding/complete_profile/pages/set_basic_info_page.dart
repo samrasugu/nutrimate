@@ -29,7 +29,7 @@ class _SetBasicInfoPageState extends State<SetBasicInfoPage> {
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(60),
         child: CustomAppBar(
-          showBackButton: true,
+          showBackButton: false,
           trailingWidget: Text(
             skipText,
             style: normalSize18Text(

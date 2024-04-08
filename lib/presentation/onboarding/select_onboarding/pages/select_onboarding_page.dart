@@ -41,7 +41,9 @@ class SelectOnboardingPage extends StatelessWidget {
                   width: double.infinity,
                   child: CustomButton(
                     fillColor: AppColors.primaryColor,
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.of(context).pushNamed(Routes.login);
+                    },
                     customBorderRadius: 25,
                     text: logInWithEmailText,
                     textStyle: normalSize18Text(AppColors.whiteColor),

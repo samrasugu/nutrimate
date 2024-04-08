@@ -6,6 +6,7 @@ import 'package:nutrimate/presentation/core/widgets/custom_button.dart';
 import 'package:nutrimate/presentation/global/spaces.dart';
 import 'package:nutrimate/presentation/global/text_themes.dart';
 import 'package:nutrimate/presentation/onboarding/complete_profile/widgets/select_meal_times_widget.dart';
+import 'package:nutrimate/presentation/router/routes.dart';
 
 class SetMealTimesPage extends StatelessWidget {
   const SetMealTimesPage({super.key});
@@ -23,6 +24,9 @@ class SetMealTimesPage extends StatelessWidget {
               AppColors.primaryColor,
             ),
           ),
+          onBackButtonPressed: () {
+            Navigator.pushNamed(context, Routes.setBasicInfo);
+          },
         ),
       ),
       body: Padding(

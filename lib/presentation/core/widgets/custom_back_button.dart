@@ -6,17 +6,17 @@ import 'package:nutrimate/presentation/core/theme/theme.dart';
 class CustomBackButton extends StatelessWidget {
   const CustomBackButton({
     super.key,
-    this.onBackButtonPressed,
+    required this.onBackButtonPressed,
   });
 
-  final void Function()? onBackButtonPressed;
+  final void Function() onBackButtonPressed;
 
   @override
   Widget build(BuildContext context) {
     return Material(
       child: InkWell(
         onTap: () {
-          onBackButtonPressed?.call();
+          onBackButtonPressed.call();
         },
         child: SvgPicture.asset(
           backButtonSvgPath,

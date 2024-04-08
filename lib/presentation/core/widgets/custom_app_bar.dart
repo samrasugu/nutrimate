@@ -26,10 +26,12 @@ class CustomAppBar extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
           if (showBackButton)
-            const Padding(
+            Padding(
               padding:
-                  EdgeInsets.symmetric(horizontal: 20.0, vertical: 15),
-              child: CustomBackButton(),
+                  const EdgeInsets.symmetric(horizontal: 20.0, vertical: 15),
+              child: CustomBackButton(
+                onBackButtonPressed: onBackButtonPressed ?? () {},
+              ),
             )
           else
             leadingWidget ?? Container(),
