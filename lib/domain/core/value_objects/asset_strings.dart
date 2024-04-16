@@ -9,3 +9,6 @@ const String introScreenTwoImagePath = 'assets/images/onboarding_two.png';
 const String introScreenThreeImagePath = 'assets/images/onboarding_three.png';
 
 const String backButtonSvgPath = 'assets/icons/chevron_back.svg';
+const String chatIconSvgPath = 'assets/icons/chat_icon.svg';
+const String xIconSvgPath = 'assets/icons/x_icon.svg';
+const String sendMessageIconSvgPath = 'assets/icons/send_message_icon.svg';

@@ -1,0 +1,35 @@
+{
+    "messages": [
+      {
+        "id": 1,
+        "sender": "user",
+        "content": "Hi, I'd like to know more about healthy breakfast options."
+      },
+      {
+        "id": 2,
+        "sender": "bot",
+        "content": "Sure! What type of breakfast are you interested in? Are you looking for something quick and easy or more elaborate?"
+      },
+      {
+        "id": 3,
+        "sender": "user",
+        "content": "I need something quick. I have a busy morning."
+      },
+      {
+        "id": 4,
+        "sender": "bot",
+        "content": "Got it! How about some overnight oats? They're nutritious, easy to prepare, and you can customize them with your favorite toppings."
+      },
+      {
+        "id": 5,
+        "sender": "user",
+        "content": "Sounds good! Can you provide me with a recipe?"
+      },
+      {
+        "id": 6,
+        "sender": "bot",
+        "content": "Of course! Here's a simple recipe: Mix rolled oats with milk or yogurt in a jar, add your choice of sweetener like honey or maple syrup, and top with fruits, nuts, or seeds. Refrigerate overnight and enjoy in the morning!"
+      }
+    ]
+  }
+  

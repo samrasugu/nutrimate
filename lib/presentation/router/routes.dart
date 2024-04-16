@@ -8,6 +8,9 @@ class Routes {
   static const String setMealTimes = '/setMealTimes';
   static const String setLocationAndPreferences = '/setLocationAndPreferences';
 
+  // chat
+  static const String chat = '/chat';
+
   static const String home = '/home';
   static const String profile = '/profile';
   static const String settings = '/settings';

@@ -49,3 +49,9 @@ const String specifyLocationText =
     'Specifying your locality will enable us to provide you with readily available foods';
 const String dietaryPreferencesQuestion = 'Do you have any dietary preferences?';
 const String searchText = 'Search';
+
+// chat
+const String nutriBotText = 'NutriBot';
+const String chatCTAText = 'Ready to get the best out of your nutrition journey? Let\'s chat!';
+const String askNowText = 'Ask Now';
+const String typeAMessageText = 'Type a message...';

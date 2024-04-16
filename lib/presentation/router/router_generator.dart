@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nutrimate/presentation/chat/pages/chat_bot_page.dart';
 import 'package:nutrimate/presentation/home/pages/home_page.dart';
 import 'package:nutrimate/presentation/onboarding/complete_profile/pages/set_basic_info_page.dart';
 import 'package:nutrimate/presentation/onboarding/complete_profile/pages/set_location_and_preferences_page.dart';
@@ -47,7 +48,13 @@ class RouteGenerator {
       case Routes.setLocationAndPreferences:
         return MaterialPageRoute<SetLocationAndPreferencesPage>(
           builder: (_) => const SetLocationAndPreferencesPage(),
-          settings: const RouteSettings(name: 'Set Location And Preferences Page'),
+          settings:
+              const RouteSettings(name: 'Set Location And Preferences Page'),
+        );
+      case Routes.chat:
+        return MaterialPageRoute<ChatBotPage>(
+          builder: (_) => const ChatBotPage(),
+          settings: const RouteSettings(name: 'ChatBot Page'),
         );
       default:
         return MaterialPageRoute<LoginPage>(
