@@ -11,6 +11,7 @@ import 'package:nutrimate/presentation/core/widgets/custom_app_bar.dart';
 import 'package:nutrimate/presentation/core/widgets/custom_text_field.dart';
 import 'package:nutrimate/presentation/global/spaces.dart';
 import 'package:nutrimate/presentation/global/text_themes.dart';
+import 'package:http/http.dart' as http;
 
 class ChatBotPage extends StatefulWidget {
   const ChatBotPage({super.key});
@@ -24,10 +25,38 @@ class _ChatBotPageState extends State<ChatBotPage> {
 
   TextEditingController messageEditingController = TextEditingController();
 
+  // base url
+  final String baseUrl = 'http://192.168.146.175';
+
   @override
   void initState() {
     super.initState();
     loadChatData();
+  }
+
+  Future<void> _sendMessage(String message) async {
+    final http.Response response = await http.post(
+      Uri.parse('$baseUrl:8000/chat'),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+      body: jsonEncode(<String, String>{'message': message}),
+    );
+
+    if (response.statusCode == 200) {
+      final jsonResponse = jsonDecode(response.body);
+      final String messageJson = jsonResponse['messages'][0]['content'];
+      final Message message = Message(
+        id: 7,
+        sender: 'bot',
+        content: messageJson,
+      );
+      setState(() {
+        messages.add(message);
+      });
+    } else {
+      throw Exception('Failed to send message');
+    }
   }
 
   Future<void> loadChatData() async {
@@ -137,6 +166,11 @@ class _ChatBotPageState extends State<ChatBotPage> {
                             content: messageEditingController.text,
                           ),
                         );
+                        String message = messageEditingController.text;
+                        if (message.isNotEmpty) {
+                          _sendMessage(message);
+                          messageEditingController.clear();
+                        }
                         messageEditingController.clear();
                       });
                     }
