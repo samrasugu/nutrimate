@@ -36,7 +36,7 @@ class _ChatBotPageState extends State<ChatBotPage> {
 
   Future<void> _sendMessage(String message) async {
     final http.Response response = await http.post(
-      Uri.parse('$baseUrl:8000/chat'),
+      Uri.parse('$baseUrl:8000/recommend'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
@@ -44,8 +44,7 @@ class _ChatBotPageState extends State<ChatBotPage> {
     );
 
     if (response.statusCode == 200) {
-      final jsonResponse = jsonDecode(response.body);
-      final String messageJson = jsonResponse['messages'][0]['content'];
+      final String messageJson = jsonDecode(response.body);
       final Message message = Message(
         id: 7,
         sender: 'bot',
@@ -181,6 +180,7 @@ class _ChatBotPageState extends State<ChatBotPage> {
                     width: 30,
                   ),
                 ),
+                size100VerticalSizedBox,
               ],
             ),
           ),
