@@ -25,8 +25,10 @@ class _ChatBotPageState extends State<ChatBotPage> {
 
   TextEditingController messageEditingController = TextEditingController();
 
+  bool isLoading = false;
+
   // base url
-  final String baseUrl = 'http://192.168.146.175';
+  final String baseUrl = 'http://192.168.222.175';
 
   @override
   void initState() {
@@ -35,6 +37,12 @@ class _ChatBotPageState extends State<ChatBotPage> {
   }
 
   Future<void> _sendMessage(String message) async {
+    if (message.isEmpty) {
+      return;
+    }
+    setState(() {
+      isLoading = true;
+    });
     final http.Response response = await http.post(
       Uri.parse('$baseUrl:8000/recommend'),
       headers: <String, String>{
@@ -44,6 +52,9 @@ class _ChatBotPageState extends State<ChatBotPage> {
     );
 
     if (response.statusCode == 200) {
+      setState(() {
+        isLoading = false;
+      });
       final String messageJson = jsonDecode(response.body);
       final Message message = Message(
         id: 7,
@@ -149,8 +160,9 @@ class _ChatBotPageState extends State<ChatBotPage> {
                     controller: messageEditingController,
                     hintText: typeAMessageText,
                     borderColor: AppColors.primaryColor,
-                    focusedBorderColor: Colors.transparent,
+                    focusedBorderColor: AppColors.primaryColor,
                     customFillColor: AppColors.whiteColor,
+                    enabled: isLoading ? false : true,
                   ),
                 ),
                 smallHorizontalSizedBox,
@@ -174,11 +186,15 @@ class _ChatBotPageState extends State<ChatBotPage> {
                       });
                     }
                   },
-                  child: SvgPicture.asset(
-                    sendMessageIconSvgPath,
-                    height: 30,
-                    width: 30,
-                  ),
+                  child: isLoading
+                      ? const CircularProgressIndicator(
+                          color: AppColors.primaryColor,
+                        )
+                      : SvgPicture.asset(
+                          sendMessageIconSvgPath,
+                          height: 30,
+                          width: 30,
+                        ),
                 ),
                 size100VerticalSizedBox,
               ],
