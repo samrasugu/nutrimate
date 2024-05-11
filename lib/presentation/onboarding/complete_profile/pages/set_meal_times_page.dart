@@ -37,10 +37,11 @@ class SetMealTimesPage extends StatelessWidget {
             children: <Widget>[
               Text(
                 howManyMealsQuestion,
-                style: boldSize20Text(
+                style: normalSize20Text(
                   AppColors.blackColor,
                 ),
               ),
+              smallVerticalSizedBox,
               Text(
                 chooseMoreSuitableOption,
                 style: normalSize16Text(
@@ -56,7 +57,10 @@ class SetMealTimesPage extends StatelessWidget {
                 width: double.infinity,
                 child: CustomButton(
                   onPressed: () {
-                    Navigator.pushNamed(context, Routes.setLocationAndPreferences);
+                    Navigator.pushNamed(
+                      context,
+                      Routes.setLocationAndPreferences,
+                    );
                   },
                   fillColor: AppColors.primaryColor,
                   customBorderRadius: 25,
@@ -65,7 +69,7 @@ class SetMealTimesPage extends StatelessWidget {
                     children: <Widget>[
                       Text(
                         continueText,
-                        style: mediumSize20Text(
+                        style: normalSize18Text(
                           AppColors.whiteColor,
                         ),
                       ),

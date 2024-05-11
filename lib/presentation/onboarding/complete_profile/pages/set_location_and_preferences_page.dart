@@ -134,7 +134,7 @@ class _SetLocationAndPreferencesPageState
                     children: <Widget>[
                       Text(
                         continueText,
-                        style: mediumSize20Text(
+                        style: normalSize18Text(
                           AppColors.whiteColor,
                         ),
                       ),

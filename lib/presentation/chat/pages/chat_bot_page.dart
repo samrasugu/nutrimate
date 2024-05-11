@@ -28,7 +28,7 @@ class _ChatBotPageState extends State<ChatBotPage> {
   bool isLoading = false;
 
   // base url
-  final String baseUrl = 'http://192.168.222.175';
+  final String baseUrl = 'http://192.168.18.175';
 
   @override
   void initState() {

@@ -46,7 +46,7 @@ class _SetBasicInfoPageState extends State<SetBasicInfoPage> {
             children: <Widget>[
               Text(
                 fillFieldsText,
-                style: boldSize20Text(
+                style: boldSize16Text(
                   AppColors.blackColor,
                 ),
               ),
@@ -55,7 +55,7 @@ class _SetBasicInfoPageState extends State<SetBasicInfoPage> {
               // gender
               Text(
                 genderText,
-                style: mediumSize20Text(
+                style: normalSize16Text(
                   AppColors.blackColor,
                 ),
               ),
@@ -107,7 +107,7 @@ class _SetBasicInfoPageState extends State<SetBasicInfoPage> {
               // age
               Text(
                 ageText,
-                style: mediumSize20Text(
+                style: normalSize16Text(
                   AppColors.blackColor,
                 ),
               ),
@@ -122,7 +122,7 @@ class _SetBasicInfoPageState extends State<SetBasicInfoPage> {
               // weight
               Text(
                 '$weightText (kg)',
-                style: mediumSize20Text(
+                style: normalSize16Text(
                   AppColors.blackColor,
                 ),
               ),
@@ -137,7 +137,7 @@ class _SetBasicInfoPageState extends State<SetBasicInfoPage> {
               // height
               Text(
                 '$heightText (cm)',
-                style: mediumSize20Text(
+                style: normalSize16Text(
                   AppColors.blackColor,
                 ),
               ),
@@ -162,7 +162,7 @@ class _SetBasicInfoPageState extends State<SetBasicInfoPage> {
                     children: <Widget>[
                       Text(
                         continueText,
-                        style: mediumSize20Text(
+                        style: normalSize18Text(
                           AppColors.whiteColor,
                         ),
                       ),
