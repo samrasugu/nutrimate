@@ -1,24 +1,54 @@
+import 'package:async_redux/async_redux.dart';
 import 'package:flutter/material.dart';
+import 'package:nutrimate/application/redux/states/app_state.dart';
+import 'package:nutrimate/application/redux/view_models/initial_route_view_model.dart';
 import 'package:nutrimate/presentation/core/theme/theme.dart';
-import 'package:nutrimate/presentation/home/pages/home_page.dart';
-import 'package:nutrimate/presentation/onboarding/onboarding_intro/pages/onboarding_intro_page.dart';
 import 'package:nutrimate/presentation/router/router_generator.dart';
+import 'package:nutrimate/presentation/router/routes.dart';
 
 void main() {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
   @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  final Store<AppState> appStore = Store<AppState>(
+    initialState: AppState.initial(),
+  );
+
+  final GlobalKey<NavigatorState> globalNavigatorKey =
+      GlobalKey<NavigatorState>();
+
+  @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'NutriMate',
-      debugShowCheckedModeBanner: false,
-      theme: AppTheme.getTheme(),
-      onGenerateRoute: RouteGenerator.generateRoute,
-      home: const OnboardingIntroPage(),
+    return StoreProvider<AppState>(
+      store: appStore,
+      child: StoreConnector<AppState, InitialRouteViewModel>(
+        converter: (Store<AppState> store) =>
+            InitialRouteViewModel.fromStore(store.state),
+        builder: (BuildContext context, InitialRouteViewModel vm) {
+          final String initialRoute = vm.initialRoute ?? Routes.onboardingIntro;
+          return MaterialApp(
+            title: 'NutriMate',
+            debugShowCheckedModeBanner: false,
+            theme: AppTheme.getTheme(),
+            onGenerateRoute: RouteGenerator.generateRoute,
+            initialRoute: initialRoute,
+            navigatorKey: globalNavigatorKey,
+            builder: (BuildContext context, Widget? child) {
+              return UserExceptionDialog<AppState>(
+                child: child!,
+              );
+            },
+          );
+        },
+      ),
     );
   }
 }
