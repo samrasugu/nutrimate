@@ -34,8 +34,6 @@ class SignUpAction extends ReduxAction<AppState> {
   Future<AppState?> reduce() async {
     final Map<String, dynamic> payload = signUpPayload.toJson();
 
-    // print(payload);
-
     final Response response = await post(
       Uri.parse(signUpUrl),
       headers: <String, String>{

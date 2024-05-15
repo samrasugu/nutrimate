@@ -60,10 +60,10 @@ class CustomTextField extends StatelessWidget {
         onTap?.call;
       },
       onFieldSubmitted: (String value) {
-        onFieldSubmitted?.call;
+        onFieldSubmitted?.call(value);
       },
       onChanged: (String value) {
-        onChanged?.call;
+        onChanged?.call(value);
       },
       decoration: InputDecoration(
         hintText: hintText,
