@@ -8,6 +8,7 @@ class User with _$User {
   factory User({
     @JsonKey(name: 'id') String? id,
     @JsonKey(name: 'firstname') String? firstname,
+    @JsonKey(name: 'lastname') String? lastname,
     @JsonKey(name: 'email') String? email,
     @JsonKey(name: 'password') String? password,
   }) = _User;

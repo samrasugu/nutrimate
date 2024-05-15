@@ -24,6 +24,8 @@ mixin _$User {
   String? get id => throw _privateConstructorUsedError;
   @JsonKey(name: 'firstname')
   String? get firstname => throw _privateConstructorUsedError;
+  @JsonKey(name: 'lastname')
+  String? get lastname => throw _privateConstructorUsedError;
   @JsonKey(name: 'email')
   String? get email => throw _privateConstructorUsedError;
   @JsonKey(name: 'password')
@@ -42,6 +44,7 @@ abstract class $UserCopyWith<$Res> {
   $Res call(
       {@JsonKey(name: 'id') String? id,
       @JsonKey(name: 'firstname') String? firstname,
+      @JsonKey(name: 'lastname') String? lastname,
       @JsonKey(name: 'email') String? email,
       @JsonKey(name: 'password') String? password});
 }
@@ -61,6 +64,7 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
   $Res call({
     Object? id = freezed,
     Object? firstname = freezed,
+    Object? lastname = freezed,
     Object? email = freezed,
     Object? password = freezed,
   }) {
@@ -72,6 +76,10 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
       firstname: freezed == firstname
           ? _value.firstname
           : firstname // ignore: cast_nullable_to_non_nullable
+              as String?,
+      lastname: freezed == lastname
+          ? _value.lastname
+          : lastname // ignore: cast_nullable_to_non_nullable
               as String?,
       email: freezed == email
           ? _value.email
@@ -95,6 +103,7 @@ abstract class _$$UserImplCopyWith<$Res> implements $UserCopyWith<$Res> {
   $Res call(
       {@JsonKey(name: 'id') String? id,
       @JsonKey(name: 'firstname') String? firstname,
+      @JsonKey(name: 'lastname') String? lastname,
       @JsonKey(name: 'email') String? email,
       @JsonKey(name: 'password') String? password});
 }
@@ -111,6 +120,7 @@ class __$$UserImplCopyWithImpl<$Res>
   $Res call({
     Object? id = freezed,
     Object? firstname = freezed,
+    Object? lastname = freezed,
     Object? email = freezed,
     Object? password = freezed,
   }) {
@@ -122,6 +132,10 @@ class __$$UserImplCopyWithImpl<$Res>
       firstname: freezed == firstname
           ? _value.firstname
           : firstname // ignore: cast_nullable_to_non_nullable
+              as String?,
+      lastname: freezed == lastname
+          ? _value.lastname
+          : lastname // ignore: cast_nullable_to_non_nullable
               as String?,
       email: freezed == email
           ? _value.email
@@ -141,6 +155,7 @@ class _$UserImpl implements _User {
   _$UserImpl(
       {@JsonKey(name: 'id') this.id,
       @JsonKey(name: 'firstname') this.firstname,
+      @JsonKey(name: 'lastname') this.lastname,
       @JsonKey(name: 'email') this.email,
       @JsonKey(name: 'password') this.password});
 
@@ -154,6 +169,9 @@ class _$UserImpl implements _User {
   @JsonKey(name: 'firstname')
   final String? firstname;
   @override
+  @JsonKey(name: 'lastname')
+  final String? lastname;
+  @override
   @JsonKey(name: 'email')
   final String? email;
   @override
@@ -162,7 +180,7 @@ class _$UserImpl implements _User {
 
   @override
   String toString() {
-    return 'User(id: $id, firstname: $firstname, email: $email, password: $password)';
+    return 'User(id: $id, firstname: $firstname, lastname: $lastname, email: $email, password: $password)';
   }
 
   @override
@@ -173,6 +191,8 @@ class _$UserImpl implements _User {
             (identical(other.id, id) || other.id == id) &&
             (identical(other.firstname, firstname) ||
                 other.firstname == firstname) &&
+            (identical(other.lastname, lastname) ||
+                other.lastname == lastname) &&
             (identical(other.email, email) || other.email == email) &&
             (identical(other.password, password) ||
                 other.password == password));
@@ -180,7 +200,8 @@ class _$UserImpl implements _User {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, firstname, email, password);
+  int get hashCode =>
+      Object.hash(runtimeType, id, firstname, lastname, email, password);
 
   @JsonKey(ignore: true)
   @override
@@ -200,6 +221,7 @@ abstract class _User implements User {
   factory _User(
       {@JsonKey(name: 'id') final String? id,
       @JsonKey(name: 'firstname') final String? firstname,
+      @JsonKey(name: 'lastname') final String? lastname,
       @JsonKey(name: 'email') final String? email,
       @JsonKey(name: 'password') final String? password}) = _$UserImpl;
 
@@ -211,6 +233,9 @@ abstract class _User implements User {
   @override
   @JsonKey(name: 'firstname')
   String? get firstname;
+  @override
+  @JsonKey(name: 'lastname')
+  String? get lastname;
   @override
   @JsonKey(name: 'email')
   String? get email;

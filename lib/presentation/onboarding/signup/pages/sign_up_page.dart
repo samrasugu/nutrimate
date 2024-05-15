@@ -24,13 +24,6 @@ class SignUpPage extends StatefulWidget {
 }
 
 class _SignUpPageState extends State<SignUpPage> {
-  // final TextEditingController firstNameController = TextEditingController();
-  // final TextEditingController lastNameController = TextEditingController();
-  // final TextEditingController emailController = TextEditingController();
-  // final TextEditingController passwordController = TextEditingController();
-
-  // final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-
   final SignUpFormManager _signUpFormManager = SignUpFormManager();
 
   void signUp({required bool hasConnection}) {
@@ -97,7 +90,6 @@ class _SignUpPageState extends State<SignUpPage> {
                             AsyncSnapshot<String> snapshot,
                           ) {
                             return CustomTextField(
-                              // controller: firstNameController,
                               hintText: firstNameString,
                               borderColor: AppColors.primaryColor,
                               focusedBorderColor: AppColors.primaryColor,
@@ -129,7 +121,6 @@ class _SignUpPageState extends State<SignUpPage> {
                             AsyncSnapshot<String> snapshot,
                           ) {
                             return CustomTextField(
-                              // controller: lastNameController,
                               hintText: lastNameString,
                               borderColor: AppColors.primaryColor,
                               focusedBorderColor: AppColors.primaryColor,
@@ -161,7 +152,6 @@ class _SignUpPageState extends State<SignUpPage> {
                             AsyncSnapshot<String> snapshot,
                           ) {
                             return CustomTextField(
-                              // controller: emailController,
                               hintText: emailString,
                               borderColor: AppColors.primaryColor,
                               focusedBorderColor: AppColors.primaryColor,
@@ -194,7 +184,6 @@ class _SignUpPageState extends State<SignUpPage> {
                             AsyncSnapshot<String> snapshot,
                           ) {
                             return CustomTextField(
-                              // controller: passwordController,
                               hintText: passwordString,
                               obscureText: true,
                               borderColor: AppColors.primaryColor,
