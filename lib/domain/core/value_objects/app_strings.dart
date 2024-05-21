@@ -47,11 +47,21 @@ const String chooseMoreSuitableOption =
 const String currentLocationQuestion = 'What is your current location?';
 const String specifyLocationText =
     'Specifying your locality will enable us to provide you with readily available foods';
-const String dietaryPreferencesQuestion = 'Do you have any dietary preferences?';
+const String dietaryPreferencesQuestion =
+    'Do you have any dietary preferences?';
 const String searchText = 'Search';
 
 // chat
 const String nutriBotText = 'NutriBot';
-const String chatCTAText = 'Ready to get the best out of your nutrition journey? Let\'s chat!';
+const String chatCTAText =
+    'Ready to get the best out of your nutrition journey? Let\'s chat!';
 const String askNowText = 'Ask Now';
 const String typeAMessageText = 'Type a message...';
+
+const String invalidEmailText = 'Invalid email';
+const String invalidPasswordText = 'Password must be at least 6 characters';
+const String invalidNameText = 'Name must be at least 3 characters';
+const String allFieldsRequiredText = 'All fields are required';
+
+const String connectionLostText = 'You have no internet connection';
+const String failedToSignUp = 'Failed to sign up';

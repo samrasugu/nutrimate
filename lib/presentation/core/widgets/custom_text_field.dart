@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class CustomTextField extends StatelessWidget {
-  final TextEditingController controller;
+  final TextEditingController? controller;
   final String hintText;
   final String? labelText;
   final int maxLines;
@@ -21,10 +21,11 @@ class CustomTextField extends StatelessWidget {
   final void Function()? onTap;
   final void Function(String)? onFieldSubmitted;
   final void Function(String)? onChanged;
+  final AutovalidateMode? autovalidateMode;
 
   const CustomTextField({
     super.key,
-    required this.controller,
+    this.controller,
     required this.hintText,
     this.labelText,
     this.maxLines = 1,
@@ -43,6 +44,7 @@ class CustomTextField extends StatelessWidget {
     this.onTap,
     this.onFieldSubmitted,
     this.onChanged,
+    this.autovalidateMode,
   })  : enabled = enabled ?? true,
         obscureText = obscureText ?? false;
 
@@ -58,10 +60,10 @@ class CustomTextField extends StatelessWidget {
         onTap?.call;
       },
       onFieldSubmitted: (String value) {
-        onFieldSubmitted?.call;
+        onFieldSubmitted?.call(value);
       },
       onChanged: (String value) {
-        onChanged?.call;
+        onChanged?.call(value);
       },
       decoration: InputDecoration(
         hintText: hintText,
@@ -111,6 +113,7 @@ class CustomTextField extends StatelessWidget {
       maxLines: maxLines,
       obscureText: obscureText,
       enabled: enabled,
+      autovalidateMode: autovalidateMode,
     );
   }
 }
