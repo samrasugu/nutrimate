@@ -22,6 +22,7 @@ MiscState _$MiscStateFromJson(Map<String, dynamic> json) {
 mixin _$MiscState {
   @JsonKey(defaultValue: Routes.onboardingIntro)
   String get initialRoute => throw _privateConstructorUsedError;
+  bool? get invalidCredentials => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -35,7 +36,8 @@ abstract class $MiscStateCopyWith<$Res> {
       _$MiscStateCopyWithImpl<$Res, MiscState>;
   @useResult
   $Res call(
-      {@JsonKey(defaultValue: Routes.onboardingIntro) String initialRoute});
+      {@JsonKey(defaultValue: Routes.onboardingIntro) String initialRoute,
+      bool? invalidCredentials});
 }
 
 /// @nodoc
@@ -52,12 +54,17 @@ class _$MiscStateCopyWithImpl<$Res, $Val extends MiscState>
   @override
   $Res call({
     Object? initialRoute = null,
+    Object? invalidCredentials = freezed,
   }) {
     return _then(_value.copyWith(
       initialRoute: null == initialRoute
           ? _value.initialRoute
           : initialRoute // ignore: cast_nullable_to_non_nullable
               as String,
+      invalidCredentials: freezed == invalidCredentials
+          ? _value.invalidCredentials
+          : invalidCredentials // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ) as $Val);
   }
 }
@@ -71,7 +78,8 @@ abstract class _$$MiscStateImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(defaultValue: Routes.onboardingIntro) String initialRoute});
+      {@JsonKey(defaultValue: Routes.onboardingIntro) String initialRoute,
+      bool? invalidCredentials});
 }
 
 /// @nodoc
@@ -86,12 +94,17 @@ class __$$MiscStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? initialRoute = null,
+    Object? invalidCredentials = freezed,
   }) {
     return _then(_$MiscStateImpl(
       initialRoute: null == initialRoute
           ? _value.initialRoute
           : initialRoute // ignore: cast_nullable_to_non_nullable
               as String,
+      invalidCredentials: freezed == invalidCredentials
+          ? _value.invalidCredentials
+          : invalidCredentials // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ));
   }
 }
@@ -101,7 +114,8 @@ class __$$MiscStateImplCopyWithImpl<$Res>
 class _$MiscStateImpl implements _MiscState {
   _$MiscStateImpl(
       {@JsonKey(defaultValue: Routes.onboardingIntro)
-      required this.initialRoute});
+      required this.initialRoute,
+      this.invalidCredentials});
 
   factory _$MiscStateImpl.fromJson(Map<String, dynamic> json) =>
       _$$MiscStateImplFromJson(json);
@@ -109,10 +123,12 @@ class _$MiscStateImpl implements _MiscState {
   @override
   @JsonKey(defaultValue: Routes.onboardingIntro)
   final String initialRoute;
+  @override
+  final bool? invalidCredentials;
 
   @override
   String toString() {
-    return 'MiscState(initialRoute: $initialRoute)';
+    return 'MiscState(initialRoute: $initialRoute, invalidCredentials: $invalidCredentials)';
   }
 
   @override
@@ -121,12 +137,15 @@ class _$MiscStateImpl implements _MiscState {
         (other.runtimeType == runtimeType &&
             other is _$MiscStateImpl &&
             (identical(other.initialRoute, initialRoute) ||
-                other.initialRoute == initialRoute));
+                other.initialRoute == initialRoute) &&
+            (identical(other.invalidCredentials, invalidCredentials) ||
+                other.invalidCredentials == invalidCredentials));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, initialRoute);
+  int get hashCode =>
+      Object.hash(runtimeType, initialRoute, invalidCredentials);
 
   @JsonKey(ignore: true)
   @override
@@ -145,7 +164,8 @@ class _$MiscStateImpl implements _MiscState {
 abstract class _MiscState implements MiscState {
   factory _MiscState(
       {@JsonKey(defaultValue: Routes.onboardingIntro)
-      required final String initialRoute}) = _$MiscStateImpl;
+      required final String initialRoute,
+      final bool? invalidCredentials}) = _$MiscStateImpl;
 
   factory _MiscState.fromJson(Map<String, dynamic> json) =
       _$MiscStateImpl.fromJson;
@@ -153,6 +173,8 @@ abstract class _MiscState implements MiscState {
   @override
   @JsonKey(defaultValue: Routes.onboardingIntro)
   String get initialRoute;
+  @override
+  bool? get invalidCredentials;
   @override
   @JsonKey(ignore: true)
   _$$MiscStateImplCopyWith<_$MiscStateImpl> get copyWith =>

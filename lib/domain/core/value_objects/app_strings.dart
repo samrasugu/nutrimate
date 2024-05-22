@@ -65,3 +65,6 @@ const String allFieldsRequiredText = 'All fields are required';
 
 const String connectionLostText = 'You have no internet connection';
 const String failedToSignUp = 'Failed to sign up';
+
+const String failedToLogin = 'Failed to login';
+const String invalidCredentials = 'Invalid credentials';

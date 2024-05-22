@@ -9,6 +9,7 @@ part 'misc_state.g.dart';
 class MiscState with _$MiscState {
   factory MiscState({
     @JsonKey(defaultValue: Routes.onboardingIntro) required String initialRoute,
+    bool? invalidCredentials,
   }) = _MiscState;
 
   factory MiscState.fromJson(Map<String, dynamic> json) =>
@@ -16,5 +17,6 @@ class MiscState with _$MiscState {
 
   factory MiscState.initial() => MiscState(
         initialRoute: Routes.onboardingIntro,
+        invalidCredentials: false,
       );
 }
