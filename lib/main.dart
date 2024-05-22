@@ -33,6 +33,8 @@ class _MyAppState extends State<MyApp> {
     });
   }
 
+  final NavigatorObserver navigatorObserver = NavigatorObserver();
+
   @override
   Widget build(BuildContext context) {
     return StoreProvider<AppState>(
@@ -50,6 +52,9 @@ class _MyAppState extends State<MyApp> {
             onGenerateRoute: RouteGenerator.generateRoute,
             initialRoute: initialRoute,
             navigatorKey: globalNavigationKey,
+            navigatorObservers: <NavigatorObserver>[
+              navigatorObserver,
+            ],
             builder: (BuildContext context, Widget? child) {
               return UserExceptionDialog<AppState>(
                 child: child!,

@@ -21,6 +21,7 @@ class CustomTextField extends StatelessWidget {
   final void Function()? onTap;
   final void Function(String)? onFieldSubmitted;
   final void Function(String)? onChanged;
+  final void Function()? onSuffixIconPressed;
   final AutovalidateMode? autovalidateMode;
 
   const CustomTextField({
@@ -44,6 +45,7 @@ class CustomTextField extends StatelessWidget {
     this.onTap,
     this.onFieldSubmitted,
     this.onChanged,
+    this.onSuffixIconPressed,
     this.autovalidateMode,
   })  : enabled = enabled ?? true,
         obscureText = obscureText ?? false;
@@ -68,7 +70,16 @@ class CustomTextField extends StatelessWidget {
       decoration: InputDecoration(
         hintText: hintText,
         prefixIcon: prefixIcon,
-        suffixIcon: suffixIcon,
+        suffixIcon: IconButton(
+          icon: suffixIcon ??
+              const SizedBox(
+                width: 0,
+                height: 0,
+              ),
+          onPressed: () {
+            onSuffixIconPressed?.call();
+          },
+        ),
         contentPadding: EdgeInsetsGeometry.lerp(
           const EdgeInsets.all(10),
           const EdgeInsets.all(10),
