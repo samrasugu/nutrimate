@@ -68,3 +68,6 @@ const String failedToSignUp = 'Failed to sign up';
 
 const String failedToLogin = 'Failed to login';
 const String invalidCredentials = 'Invalid credentials';
+
+const String invalidGenderText = 'Please select a valid gender';
+const String invalidAgeText = 'Please enter a valid age';

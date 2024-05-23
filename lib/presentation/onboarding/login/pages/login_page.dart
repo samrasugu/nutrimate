@@ -201,7 +201,7 @@ class _LoginPageState extends State<LoginPage> {
                                   customBorderRadius: 20,
                                   text: signInText,
                                   onPressed: () {
-                                    if (hasData) {
+                                    if (hasData && snapshot.data!) {
                                       logIn(
                                         hasConnection:
                                             StoreProvider.state<AppState>(

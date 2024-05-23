@@ -35,6 +35,7 @@ class SetMealTimesPage extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
+              largeVerticalSizedBox,
               Text(
                 howManyMealsQuestion,
                 style: normalSize20Text(

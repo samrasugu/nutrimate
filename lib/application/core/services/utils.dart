@@ -16,6 +16,22 @@ String capitalize(String input) {
   return '${input[0].toUpperCase()}${input.substring(1).toLowerCase()}';
 }
 
+Gender genderFromString(String? value) {
+  if (value == null || value.isEmpty) {
+    return Gender.unknown;
+  }
+
+  return Gender.values
+      .where(
+        (Gender gender) => gender.name.toLowerCase() == value.toLowerCase(),
+      )
+      .first;
+}
+
+String genderToJson(Gender? gender) {
+  return (gender?.name ?? Gender.unknown.name).toLowerCase();
+}
+
 List<String> mealTimes = <String>[
   '3 times a day(breakfast, lunch, dinner)',
   '4-5 times a day(adding snacks)',
