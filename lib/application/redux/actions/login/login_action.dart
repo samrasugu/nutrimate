@@ -15,7 +15,7 @@ import 'package:nutrimate/infrastructure/endpoints.dart';
 
 class LoginAction extends ReduxAction<AppState> {
   final LoginPayload loginPayload;
-  final VoidCallback onSuccess;
+  final VoidCallback? onSuccess;
 
   LoginAction({
     required this.loginPayload,
@@ -69,7 +69,7 @@ class LoginAction extends ReduxAction<AppState> {
 
       // TODO: dispatch action to fetch and update user profile
 
-      onSuccess();
+      onSuccess?.call();
     } else if (response.statusCode == 400) {
       throw const UserException(invalidCredentials);
     } else {

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nutrimate/presentation/chat/pages/chat_bot_page.dart';
 import 'package:nutrimate/presentation/home/pages/home_page.dart';
+import 'package:nutrimate/presentation/onboarding/complete_profile/pages/search_diseases_page.dart';
 import 'package:nutrimate/presentation/onboarding/complete_profile/pages/set_basic_info_page.dart';
 import 'package:nutrimate/presentation/onboarding/complete_profile/pages/set_location_and_preferences_page.dart';
 import 'package:nutrimate/presentation/onboarding/complete_profile/pages/set_meal_times_page.dart';
@@ -55,6 +56,11 @@ class RouteGenerator {
         return MaterialPageRoute<ChatBotPage>(
           builder: (_) => const ChatBotPage(),
           settings: const RouteSettings(name: 'ChatBot Page'),
+        );
+      case Routes.searchDiseases:
+        return MaterialPageRoute<SearchDiseasesPage>(
+          builder: (_) => const SearchDiseasesPage(),
+          settings: const RouteSettings(name: 'Search Diseases Page'),
         );
       default:
         return MaterialPageRoute<LoginPage>(

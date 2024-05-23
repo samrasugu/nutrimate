@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:nutrimate/application/redux/states/search_diseases_state.dart';
 
 import 'package:nutrimate/presentation/router/routes.dart';
 
@@ -10,6 +11,7 @@ class MiscState with _$MiscState {
   factory MiscState({
     @JsonKey(defaultValue: Routes.onboardingIntro) required String initialRoute,
     bool? invalidCredentials,
+    SearchDiseasesState? searchDiseasesState,
   }) = _MiscState;
 
   factory MiscState.fromJson(Map<String, dynamic> json) =>
@@ -18,5 +20,6 @@ class MiscState with _$MiscState {
   factory MiscState.initial() => MiscState(
         initialRoute: Routes.onboardingIntro,
         invalidCredentials: false,
+        searchDiseasesState: SearchDiseasesState.initial(),
       );
 }

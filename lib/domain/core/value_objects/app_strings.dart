@@ -71,3 +71,8 @@ const String invalidCredentials = 'Invalid credentials';
 
 const String invalidGenderText = 'Please select a valid gender';
 const String invalidAgeText = 'Please enter a valid age';
+
+const String haveIllnessQuestionText = 'Do you have any illnesses?';
+const String haveIllnessQuestionDesc =
+    'This will guide us in giving you the appropriate meal recommendations according to your health state.';
+const String searchString = 'Search';

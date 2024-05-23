@@ -7,6 +7,7 @@ class Routes {
   static const String setBasicInfo = '/setBasicInfo';
   static const String setMealTimes = '/setMealTimes';
   static const String setLocationAndPreferences = '/setLocationAndPreferences';
+  static const String searchDiseases = '/searchDiseases';
 
   // chat
   static const String chat = '/chat';
