@@ -45,7 +45,7 @@ class _SetLocationAndPreferencesPageState
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              smallVerticalSizedBox,
+              mediumVerticalSizedBox,
               Text(
                 currentLocationQuestion,
                 style: boldSize20Text(

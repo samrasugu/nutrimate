@@ -234,7 +234,7 @@ class _SignUpPageState extends State<SignUpPage> {
                                   customBorderRadius: 20,
                                   text: signUpText,
                                   onPressed: () {
-                                    if (hasData) {
+                                    if (hasData && snapshot.data!) {
                                       signUp(
                                         hasConnection: vm.isConnected,
                                       );
