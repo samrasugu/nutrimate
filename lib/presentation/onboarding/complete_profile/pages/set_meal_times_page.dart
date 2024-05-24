@@ -60,7 +60,7 @@ class SetMealTimesPage extends StatelessWidget {
                   onPressed: () {
                     Navigator.pushNamed(
                       context,
-                      Routes.setLocationAndPreferences,
+                      Routes.setLocation,
                     );
                   },
                   fillColor: AppColors.primaryColor,

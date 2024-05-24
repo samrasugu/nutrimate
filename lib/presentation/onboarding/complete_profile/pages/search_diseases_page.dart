@@ -16,7 +16,7 @@ import 'package:nutrimate/presentation/core/widgets/custom_text_field.dart';
 import 'package:nutrimate/presentation/global/spaces.dart';
 import 'package:nutrimate/presentation/global/text_themes.dart';
 import 'package:nutrimate/presentation/global/widgets/platform_loader.dart';
-import 'package:nutrimate/presentation/onboarding/complete_profile/widgets/search_disease_item.dart';
+import 'package:nutrimate/presentation/onboarding/complete_profile/widgets/search_item.dart';
 import 'package:nutrimate/presentation/router/routes.dart';
 
 class SearchDiseasesPage extends StatefulWidget {
@@ -115,7 +115,7 @@ class _SearchDiseasesPageState extends State<SearchDiseasesPage> {
                         itemBuilder: (BuildContext context, int index) {
                           return Padding(
                             padding: const EdgeInsets.symmetric(vertical: 5.0),
-                            child: SearchDiseaseItem(
+                            child: SearchItem(
                               text: diseases[index]?.name ?? '',
                               onTap: () {
                                 final List<Disease?> currentlySelectedDiseases =
@@ -130,6 +130,7 @@ class _SearchDiseasesPageState extends State<SearchDiseasesPage> {
                                 context.dispatch(
                                   UpdateSearchDiseasesStateAction(
                                     selectedDiseases: currentlySelectedDiseases,
+                                    searchedDiseases: <Disease?>[],
                                   ),
                                 );
                               },
@@ -154,7 +155,6 @@ class _SearchDiseasesPageState extends State<SearchDiseasesPage> {
                                   vm.selectedDiseases ?? <Disease>[],
                                 );
                                 modifiableList.remove(disease);
-                                // vm.selectedDiseases?.remove(disease);
                                 context.dispatch(
                                   UpdateSearchDiseasesStateAction(
                                     selectedDiseases: modifiableList,
@@ -178,6 +178,7 @@ class _SearchDiseasesPageState extends State<SearchDiseasesPage> {
                           //   context,
                           //   Routes.setLocationAndPreferences,
                           // );
+                          // submit(); -- function {update complete profile state, then navigate user}
                         },
                         fillColor: AppColors.primaryColor,
                         customBorderRadius: 25,

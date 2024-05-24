@@ -25,6 +25,8 @@ mixin _$MiscState {
   bool? get invalidCredentials => throw _privateConstructorUsedError;
   SearchDiseasesState? get searchDiseasesState =>
       throw _privateConstructorUsedError;
+  SearchLocationState? get searchLocationState =>
+      throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -40,9 +42,11 @@ abstract class $MiscStateCopyWith<$Res> {
   $Res call(
       {@JsonKey(defaultValue: Routes.onboardingIntro) String initialRoute,
       bool? invalidCredentials,
-      SearchDiseasesState? searchDiseasesState});
+      SearchDiseasesState? searchDiseasesState,
+      SearchLocationState? searchLocationState});
 
   $SearchDiseasesStateCopyWith<$Res>? get searchDiseasesState;
+  $SearchLocationStateCopyWith<$Res>? get searchLocationState;
 }
 
 /// @nodoc
@@ -61,6 +65,7 @@ class _$MiscStateCopyWithImpl<$Res, $Val extends MiscState>
     Object? initialRoute = null,
     Object? invalidCredentials = freezed,
     Object? searchDiseasesState = freezed,
+    Object? searchLocationState = freezed,
   }) {
     return _then(_value.copyWith(
       initialRoute: null == initialRoute
@@ -75,6 +80,10 @@ class _$MiscStateCopyWithImpl<$Res, $Val extends MiscState>
           ? _value.searchDiseasesState
           : searchDiseasesState // ignore: cast_nullable_to_non_nullable
               as SearchDiseasesState?,
+      searchLocationState: freezed == searchLocationState
+          ? _value.searchLocationState
+          : searchLocationState // ignore: cast_nullable_to_non_nullable
+              as SearchLocationState?,
     ) as $Val);
   }
 
@@ -90,6 +99,19 @@ class _$MiscStateCopyWithImpl<$Res, $Val extends MiscState>
       return _then(_value.copyWith(searchDiseasesState: value) as $Val);
     });
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $SearchLocationStateCopyWith<$Res>? get searchLocationState {
+    if (_value.searchLocationState == null) {
+      return null;
+    }
+
+    return $SearchLocationStateCopyWith<$Res>(_value.searchLocationState!,
+        (value) {
+      return _then(_value.copyWith(searchLocationState: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -103,10 +125,13 @@ abstract class _$$MiscStateImplCopyWith<$Res>
   $Res call(
       {@JsonKey(defaultValue: Routes.onboardingIntro) String initialRoute,
       bool? invalidCredentials,
-      SearchDiseasesState? searchDiseasesState});
+      SearchDiseasesState? searchDiseasesState,
+      SearchLocationState? searchLocationState});
 
   @override
   $SearchDiseasesStateCopyWith<$Res>? get searchDiseasesState;
+  @override
+  $SearchLocationStateCopyWith<$Res>? get searchLocationState;
 }
 
 /// @nodoc
@@ -123,6 +148,7 @@ class __$$MiscStateImplCopyWithImpl<$Res>
     Object? initialRoute = null,
     Object? invalidCredentials = freezed,
     Object? searchDiseasesState = freezed,
+    Object? searchLocationState = freezed,
   }) {
     return _then(_$MiscStateImpl(
       initialRoute: null == initialRoute
@@ -137,6 +163,10 @@ class __$$MiscStateImplCopyWithImpl<$Res>
           ? _value.searchDiseasesState
           : searchDiseasesState // ignore: cast_nullable_to_non_nullable
               as SearchDiseasesState?,
+      searchLocationState: freezed == searchLocationState
+          ? _value.searchLocationState
+          : searchLocationState // ignore: cast_nullable_to_non_nullable
+              as SearchLocationState?,
     ));
   }
 }
@@ -148,7 +178,8 @@ class _$MiscStateImpl implements _MiscState {
       {@JsonKey(defaultValue: Routes.onboardingIntro)
       required this.initialRoute,
       this.invalidCredentials,
-      this.searchDiseasesState});
+      this.searchDiseasesState,
+      this.searchLocationState});
 
   factory _$MiscStateImpl.fromJson(Map<String, dynamic> json) =>
       _$$MiscStateImplFromJson(json);
@@ -160,10 +191,12 @@ class _$MiscStateImpl implements _MiscState {
   final bool? invalidCredentials;
   @override
   final SearchDiseasesState? searchDiseasesState;
+  @override
+  final SearchLocationState? searchLocationState;
 
   @override
   String toString() {
-    return 'MiscState(initialRoute: $initialRoute, invalidCredentials: $invalidCredentials, searchDiseasesState: $searchDiseasesState)';
+    return 'MiscState(initialRoute: $initialRoute, invalidCredentials: $invalidCredentials, searchDiseasesState: $searchDiseasesState, searchLocationState: $searchLocationState)';
   }
 
   @override
@@ -176,13 +209,15 @@ class _$MiscStateImpl implements _MiscState {
             (identical(other.invalidCredentials, invalidCredentials) ||
                 other.invalidCredentials == invalidCredentials) &&
             (identical(other.searchDiseasesState, searchDiseasesState) ||
-                other.searchDiseasesState == searchDiseasesState));
+                other.searchDiseasesState == searchDiseasesState) &&
+            (identical(other.searchLocationState, searchLocationState) ||
+                other.searchLocationState == searchLocationState));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, initialRoute, invalidCredentials, searchDiseasesState);
+  int get hashCode => Object.hash(runtimeType, initialRoute, invalidCredentials,
+      searchDiseasesState, searchLocationState);
 
   @JsonKey(ignore: true)
   @override
@@ -203,7 +238,8 @@ abstract class _MiscState implements MiscState {
       {@JsonKey(defaultValue: Routes.onboardingIntro)
       required final String initialRoute,
       final bool? invalidCredentials,
-      final SearchDiseasesState? searchDiseasesState}) = _$MiscStateImpl;
+      final SearchDiseasesState? searchDiseasesState,
+      final SearchLocationState? searchLocationState}) = _$MiscStateImpl;
 
   factory _MiscState.fromJson(Map<String, dynamic> json) =
       _$MiscStateImpl.fromJson;
@@ -215,6 +251,8 @@ abstract class _MiscState implements MiscState {
   bool? get invalidCredentials;
   @override
   SearchDiseasesState? get searchDiseasesState;
+  @override
+  SearchLocationState? get searchLocationState;
   @override
   @JsonKey(ignore: true)
   _$$MiscStateImplCopyWith<_$MiscStateImpl> get copyWith =>

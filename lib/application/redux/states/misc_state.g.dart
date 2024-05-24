@@ -14,6 +14,10 @@ _$MiscStateImpl _$$MiscStateImplFromJson(Map<String, dynamic> json) =>
           ? null
           : SearchDiseasesState.fromJson(
               json['searchDiseasesState'] as Map<String, dynamic>),
+      searchLocationState: json['searchLocationState'] == null
+          ? null
+          : SearchLocationState.fromJson(
+              json['searchLocationState'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$MiscStateImplToJson(_$MiscStateImpl instance) =>
@@ -21,4 +25,5 @@ Map<String, dynamic> _$$MiscStateImplToJson(_$MiscStateImpl instance) =>
       'initialRoute': instance.initialRoute,
       'invalidCredentials': instance.invalidCredentials,
       'searchDiseasesState': instance.searchDiseasesState,
+      'searchLocationState': instance.searchLocationState,
     };

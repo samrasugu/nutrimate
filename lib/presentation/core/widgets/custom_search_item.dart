@@ -16,7 +16,7 @@ class CustomSearchItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
       decoration: BoxDecoration(
         color: AppColors.primaryColor,
         borderRadius: BorderRadius.circular(25),
@@ -39,6 +39,7 @@ class CustomSearchItem extends StatelessWidget {
             child: const Icon(
               Icons.close,
               color: AppColors.whiteColor,
+              size: 20,
             ),
           ),
         ],
