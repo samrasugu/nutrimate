@@ -36,5 +36,8 @@ linter:
     camel_case_types: true
     file_names: true
 
+    # exclude:
+    unnecessary_this: false
+
 # Additional information about this file can be found at
 # https://dart.dev/guides/language/analysis-options
