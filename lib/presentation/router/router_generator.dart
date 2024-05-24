@@ -3,7 +3,7 @@ import 'package:nutrimate/presentation/chat/pages/chat_bot_page.dart';
 import 'package:nutrimate/presentation/home/pages/home_page.dart';
 import 'package:nutrimate/presentation/onboarding/complete_profile/pages/search_diseases_page.dart';
 import 'package:nutrimate/presentation/onboarding/complete_profile/pages/set_basic_info_page.dart';
-import 'package:nutrimate/presentation/onboarding/complete_profile/pages/set_location_and_preferences_page.dart';
+import 'package:nutrimate/presentation/onboarding/complete_profile/pages/set_location_page.dart';
 import 'package:nutrimate/presentation/onboarding/complete_profile/pages/set_meal_times_page.dart';
 import 'package:nutrimate/presentation/onboarding/login/pages/login_page.dart';
 import 'package:nutrimate/presentation/onboarding/onboarding_intro/pages/onboarding_intro_page.dart';
@@ -46,11 +46,10 @@ class RouteGenerator {
           builder: (_) => const SetMealTimesPage(),
           settings: const RouteSettings(name: 'Set Preferences Page'),
         );
-      case Routes.setLocationAndPreferences:
-        return MaterialPageRoute<SetLocationAndPreferencesPage>(
-          builder: (_) => const SetLocationAndPreferencesPage(),
-          settings:
-              const RouteSettings(name: 'Set Location And Preferences Page'),
+      case Routes.setLocation:
+        return MaterialPageRoute<SetLocationPage>(
+          builder: (_) => const SetLocationPage(),
+          settings: const RouteSettings(name: 'Set Location Page'),
         );
       case Routes.chat:
         return MaterialPageRoute<ChatBotPage>(

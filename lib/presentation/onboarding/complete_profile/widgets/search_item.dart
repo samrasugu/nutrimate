@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:nutrimate/presentation/core/theme/theme.dart';
 import 'package:nutrimate/presentation/global/text_themes.dart';
 
-class SearchDiseaseItem extends StatelessWidget {
-  const SearchDiseaseItem({super.key, required this.text, this.onTap});
+class SearchItem extends StatelessWidget {
+  const SearchItem({super.key, required this.text, this.onTap});
 
   final String text;
   final VoidCallback? onTap;
