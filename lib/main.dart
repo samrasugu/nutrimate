@@ -14,7 +14,32 @@ import 'package:nutrimate/presentation/router/routes.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  runApp(const MyApp());
+  final NutriMateStateDatabase database = NutriMateStateDatabase(
+    databaseName: localDatabaseName,
+  );
+
+  // initialize the database
+  await database.init();
+
+  // read state from the database
+  final AppState initialState = await database.readState();
+
+  if (initialState == AppState.initial()) {
+    await database.saveInitialState(initialState);
+  }
+
+  Store<AppState> appStore = Store<AppState>(
+    initialState: initialState,
+    persistor: PersistorPrinterDecorator<AppState>(database),
+    defaultDistinct: true,
+    actionObservers: <ActionObserver<AppState>>[
+      CustomActionOnbserver(),
+    ],
+  );
+
+  NavigateAction.setNavigatorKey(globalNavigationKey);
+
+  runApp(StoreProvider<AppState>(store: appStore, child: const MyApp()));
 }
 
 class MyApp extends StatefulWidget {
@@ -25,39 +50,9 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  final NutriMateStateDatabase database = NutriMateStateDatabase(
-    databaseName: localDatabaseName,
-  );
-
-  Store<AppState>? appStore;
-
-  void setUpApp() async {
-    // initialize the database
-    await database.init();
-
-    // read state from the database
-    final AppState initialState = await database.readState();
-
-    // if the initial state is empty[null], init a new database
-    if (initialState == AppState.initial()) {
-      await database.saveInitialState(initialState);
-    }
-
-    appStore = Store<AppState>(
-      initialState: initialState,
-      persistor: PersistorPrinterDecorator<AppState>(database),
-      defaultDistinct: true,
-      actionObservers: <ActionObserver<AppState>>[
-        CustomActionOnbserver(),
-      ],
-    );
-  }
-
   @override
   void initState() {
     super.initState();
-
-    setUpApp();
 
     WidgetsBinding.instance.addPostFrameCallback((Duration timeStamp) async {
       globalNavigationKey.currentContext!.dispatch(CheckSignInAction());
@@ -68,32 +63,29 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return StoreProvider<AppState>(
-      store: appStore ?? Store<AppState>(initialState: AppState.initial()),
-      child: StoreConnector<AppState, InitialRouteViewModel>(
-        converter: (Store<AppState> store) =>
-            InitialRouteViewModel.fromStore(store.state),
-        builder: (BuildContext context, InitialRouteViewModel vm) {
-          final String initialRoute = vm.initialRoute ?? Routes.onboardingIntro;
+    return StoreConnector<AppState, InitialRouteViewModel>(
+      converter: (Store<AppState> store) =>
+          InitialRouteViewModel.fromStore(store.state),
+      builder: (BuildContext context, InitialRouteViewModel vm) {
+        final String initialRoute = vm.initialRoute ?? Routes.onboardingIntro;
 
-          return MaterialApp(
-            title: 'NutriMate',
-            debugShowCheckedModeBanner: false,
-            theme: AppTheme.getTheme(),
-            onGenerateRoute: RouteGenerator.generateRoute,
-            initialRoute: initialRoute,
-            navigatorKey: globalNavigationKey,
-            navigatorObservers: <NavigatorObserver>[
-              navigatorObserver,
-            ],
-            builder: (BuildContext context, Widget? child) {
-              return UserExceptionDialog<AppState>(
-                child: child!,
-              );
-            },
-          );
-        },
-      ),
+        return MaterialApp(
+          title: 'NutriMate',
+          debugShowCheckedModeBanner: false,
+          theme: AppTheme.getTheme(),
+          onGenerateRoute: RouteGenerator.generateRoute,
+          initialRoute: initialRoute,
+          navigatorKey: globalNavigationKey,
+          navigatorObservers: <NavigatorObserver>[
+            navigatorObserver,
+          ],
+          builder: (BuildContext context, Widget? child) {
+            return UserExceptionDialog<AppState>(
+              child: child!,
+            );
+          },
+        );
+      },
     );
   }
 }
