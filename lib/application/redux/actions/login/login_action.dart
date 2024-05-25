@@ -12,14 +12,15 @@ import 'package:nutrimate/domain/core/entities/sign_up/sign_up_response.dart';
 import 'package:nutrimate/domain/core/entities/sign_up/user_signup_response.dart';
 import 'package:nutrimate/domain/core/value_objects/app_strings.dart';
 import 'package:nutrimate/infrastructure/endpoints.dart';
+import 'package:nutrimate/presentation/router/routes.dart';
 
 class LoginAction extends ReduxAction<AppState> {
   final LoginPayload loginPayload;
-  final VoidCallback? onSuccess;
+  // final VoidCallback? onSuccess;
 
   LoginAction({
     required this.loginPayload,
-    required this.onSuccess,
+    // required this.onSuccess,
   });
 
   @override
@@ -68,8 +69,15 @@ class LoginAction extends ReduxAction<AppState> {
       );
 
       // TODO: dispatch action to fetch and update user profile
+      // Replace with aciton to update user profile
 
-      onSuccess?.call();
+      dispatch(
+        NavigateAction<AppState>.pushNamedAndRemoveUntil(
+          Routes.home,
+          (Route<dynamic> route) => false,
+        ),
+      );
+      // onSuccess?.call();
     } else if (response.statusCode == 400) {
       throw const UserException(invalidCredentials);
     } else {

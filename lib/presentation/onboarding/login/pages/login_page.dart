@@ -8,7 +8,6 @@ import 'package:nutrimate/application/redux/states/app_state.dart';
 import 'package:nutrimate/application/redux/view_models/login_view_model.dart';
 import 'package:nutrimate/domain/core/value_objects/app_strings.dart';
 import 'package:nutrimate/domain/core/value_objects/asset_strings.dart';
-import 'package:nutrimate/domain/core/value_objects/global_keys.dart';
 import 'package:nutrimate/presentation/core/theme/theme.dart';
 import 'package:nutrimate/presentation/core/widgets/custom_button.dart';
 import 'package:nutrimate/presentation/core/widgets/custom_text_field.dart';
@@ -16,7 +15,6 @@ import 'package:nutrimate/presentation/global/spaces.dart';
 import 'package:nutrimate/presentation/global/text_themes.dart';
 import 'package:nutrimate/presentation/global/widgets/platform_loader.dart';
 import 'package:nutrimate/presentation/onboarding/login/login_form_manager.dart';
-import 'package:nutrimate/presentation/router/routes.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -39,13 +37,6 @@ class _LoginPageState extends State<LoginPage> {
         context,
         LoginAction(
           loginPayload: _loginFormManager.submit(),
-          onSuccess: () {
-            // globalNavigationKey.currentState!.pushNamedAndRemoveUntil(
-            //   Routes.home,
-            //   (Route<dynamic> route) => false,
-            // );
-            globalNavigationKey.currentState!.pushNamed(Routes.home);
-          },
         ),
       );
     } else {
