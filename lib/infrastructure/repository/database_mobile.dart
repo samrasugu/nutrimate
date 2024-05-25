@@ -42,10 +42,9 @@ class NutriMateDatabaseMobile<T extends DatabaseExecutor>
     final int counts = t1 + t2 + t3 + t4;
 
     if (counts > 0) {
-      return true;
-    } else {
       return false;
     }
+    return true;
   }
 
   Future<Map<String, dynamic>> retrieverWorker(Tables table) async {

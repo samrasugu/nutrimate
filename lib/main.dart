@@ -28,7 +28,7 @@ void main() async {
     await database.saveInitialState(initialState);
   }
 
-  Store<AppState> appStore = Store<AppState>(
+  final Store<AppState> appStore = Store<AppState>(
     initialState: initialState,
     persistor: PersistorPrinterDecorator<AppState>(database),
     defaultDistinct: true,

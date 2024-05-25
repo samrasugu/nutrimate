@@ -64,7 +64,7 @@ class NutriMateStateDatabase implements PersistorPrinterDecorator<AppState> {
     ).isDatabaseEmpty()) {
       return AppState.initial();
     } else {
-      return retrievState(
+      return retrieveState(
         NutriMateDatabaseMobile<Database>(
           initDatabase: InitDatabase<Database>(dbName: this.databaseName),
         ),
@@ -141,7 +141,7 @@ class NutriMateStateDatabase implements PersistorPrinterDecorator<AppState> {
   }
 }
 
-Future<AppState> retrievState(
+Future<AppState> retrieveState(
   NutriMateDatabaseBase<dynamic> database,
 ) async {
   try {
