@@ -1,6 +1,7 @@
 import 'package:async_redux/async_redux.dart';
 import 'package:flutter/foundation.dart';
 import 'package:nutrimate/application/redux/states/app_state.dart';
+import 'package:nutrimate/application/redux/states/chat_state.dart';
 import 'package:nutrimate/application/redux/states/complete_profile_state.dart';
 import 'package:nutrimate/application/redux/states/connectivity_state.dart';
 import 'package:nutrimate/application/redux/states/misc_state.dart';
@@ -44,6 +45,7 @@ class NutriMateStateDatabase implements PersistorPrinterDecorator<AppState> {
         lastPersistedState.completeProfileState !=
             newState.completeProfileState ||
         lastPersistedState.connectivityState != newState.connectivityState ||
+        lastPersistedState.chatState != newState.chatState ||
         lastPersistedState.miscState != newState.miscState) {
       await persistState(
         newState,
@@ -124,6 +126,12 @@ class NutriMateStateDatabase implements PersistorPrinterDecorator<AppState> {
         data: newState.connectivityState!.toJson(),
       );
 
+      // chat state
+      await database.saveState(
+        table: Tables.chatState,
+        data: newState.chatState!.toJson(),
+      );
+
       // misc state
       await database.saveState(
         table: Tables.miscState,
@@ -154,6 +162,9 @@ Future<AppState> retrieveState(
       ),
       connectivityState: ConnectivityState.fromJson(
         await database.retrieveState(Tables.connectivityState),
+      ),
+      chatState: ChatState.fromJson(
+        await database.retrieveState(Tables.chatState),
       ),
       miscState: MiscState.fromJson(
         await database.retrieveState(Tables.miscState),

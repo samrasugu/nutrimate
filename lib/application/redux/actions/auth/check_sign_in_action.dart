@@ -13,7 +13,7 @@ class CheckSignInAction extends ReduxAction<AppState> {
     String initialRoute = Routes.onboardingIntro;
 
     if (isSignedIn) {
-      initialRoute = Routes.home;
+      initialRoute = Routes.chat;
     }
 
     dispatch(UpdateInitialRouteAction(initialRoute: initialRoute));

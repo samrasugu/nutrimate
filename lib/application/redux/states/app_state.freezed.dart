@@ -25,6 +25,7 @@ mixin _$AppState {
       throw _privateConstructorUsedError;
   ConnectivityState? get connectivityState =>
       throw _privateConstructorUsedError;
+  ChatState? get chatState => throw _privateConstructorUsedError;
   MiscState? get miscState => throw _privateConstructorUsedError;
   @JsonKey(includeFromJson: false, includeToJson: false)
   Wait? get wait => throw _privateConstructorUsedError;
@@ -44,12 +45,14 @@ abstract class $AppStateCopyWith<$Res> {
       {UserProfileState? userProfileState,
       CompleteProfileState? completeProfileState,
       ConnectivityState? connectivityState,
+      ChatState? chatState,
       MiscState? miscState,
       @JsonKey(includeFromJson: false, includeToJson: false) Wait? wait});
 
   $UserProfileStateCopyWith<$Res>? get userProfileState;
   $CompleteProfileStateCopyWith<$Res>? get completeProfileState;
   $ConnectivityStateCopyWith<$Res>? get connectivityState;
+  $ChatStateCopyWith<$Res>? get chatState;
   $MiscStateCopyWith<$Res>? get miscState;
 }
 
@@ -69,6 +72,7 @@ class _$AppStateCopyWithImpl<$Res, $Val extends AppState>
     Object? userProfileState = freezed,
     Object? completeProfileState = freezed,
     Object? connectivityState = freezed,
+    Object? chatState = freezed,
     Object? miscState = freezed,
     Object? wait = freezed,
   }) {
@@ -85,6 +89,10 @@ class _$AppStateCopyWithImpl<$Res, $Val extends AppState>
           ? _value.connectivityState
           : connectivityState // ignore: cast_nullable_to_non_nullable
               as ConnectivityState?,
+      chatState: freezed == chatState
+          ? _value.chatState
+          : chatState // ignore: cast_nullable_to_non_nullable
+              as ChatState?,
       miscState: freezed == miscState
           ? _value.miscState
           : miscState // ignore: cast_nullable_to_non_nullable
@@ -135,6 +143,18 @@ class _$AppStateCopyWithImpl<$Res, $Val extends AppState>
 
   @override
   @pragma('vm:prefer-inline')
+  $ChatStateCopyWith<$Res>? get chatState {
+    if (_value.chatState == null) {
+      return null;
+    }
+
+    return $ChatStateCopyWith<$Res>(_value.chatState!, (value) {
+      return _then(_value.copyWith(chatState: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
   $MiscStateCopyWith<$Res>? get miscState {
     if (_value.miscState == null) {
       return null;
@@ -158,6 +178,7 @@ abstract class _$$AppStateImplCopyWith<$Res>
       {UserProfileState? userProfileState,
       CompleteProfileState? completeProfileState,
       ConnectivityState? connectivityState,
+      ChatState? chatState,
       MiscState? miscState,
       @JsonKey(includeFromJson: false, includeToJson: false) Wait? wait});
 
@@ -167,6 +188,8 @@ abstract class _$$AppStateImplCopyWith<$Res>
   $CompleteProfileStateCopyWith<$Res>? get completeProfileState;
   @override
   $ConnectivityStateCopyWith<$Res>? get connectivityState;
+  @override
+  $ChatStateCopyWith<$Res>? get chatState;
   @override
   $MiscStateCopyWith<$Res>? get miscState;
 }
@@ -185,6 +208,7 @@ class __$$AppStateImplCopyWithImpl<$Res>
     Object? userProfileState = freezed,
     Object? completeProfileState = freezed,
     Object? connectivityState = freezed,
+    Object? chatState = freezed,
     Object? miscState = freezed,
     Object? wait = freezed,
   }) {
@@ -201,6 +225,10 @@ class __$$AppStateImplCopyWithImpl<$Res>
           ? _value.connectivityState
           : connectivityState // ignore: cast_nullable_to_non_nullable
               as ConnectivityState?,
+      chatState: freezed == chatState
+          ? _value.chatState
+          : chatState // ignore: cast_nullable_to_non_nullable
+              as ChatState?,
       miscState: freezed == miscState
           ? _value.miscState
           : miscState // ignore: cast_nullable_to_non_nullable
@@ -220,6 +248,7 @@ class _$AppStateImpl implements _AppState {
       {this.userProfileState,
       this.completeProfileState,
       this.connectivityState,
+      this.chatState,
       this.miscState,
       @JsonKey(includeFromJson: false, includeToJson: false) this.wait});
 
@@ -233,6 +262,8 @@ class _$AppStateImpl implements _AppState {
   @override
   final ConnectivityState? connectivityState;
   @override
+  final ChatState? chatState;
+  @override
   final MiscState? miscState;
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -240,7 +271,7 @@ class _$AppStateImpl implements _AppState {
 
   @override
   String toString() {
-    return 'AppState(userProfileState: $userProfileState, completeProfileState: $completeProfileState, connectivityState: $connectivityState, miscState: $miscState, wait: $wait)';
+    return 'AppState(userProfileState: $userProfileState, completeProfileState: $completeProfileState, connectivityState: $connectivityState, chatState: $chatState, miscState: $miscState, wait: $wait)';
   }
 
   @override
@@ -254,6 +285,8 @@ class _$AppStateImpl implements _AppState {
                 other.completeProfileState == completeProfileState) &&
             (identical(other.connectivityState, connectivityState) ||
                 other.connectivityState == connectivityState) &&
+            (identical(other.chatState, chatState) ||
+                other.chatState == chatState) &&
             (identical(other.miscState, miscState) ||
                 other.miscState == miscState) &&
             (identical(other.wait, wait) || other.wait == wait));
@@ -262,7 +295,7 @@ class _$AppStateImpl implements _AppState {
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, userProfileState,
-      completeProfileState, connectivityState, miscState, wait);
+      completeProfileState, connectivityState, chatState, miscState, wait);
 
   @JsonKey(ignore: true)
   @override
@@ -283,6 +316,7 @@ abstract class _AppState implements AppState {
       {final UserProfileState? userProfileState,
       final CompleteProfileState? completeProfileState,
       final ConnectivityState? connectivityState,
+      final ChatState? chatState,
       final MiscState? miscState,
       @JsonKey(includeFromJson: false, includeToJson: false)
       final Wait? wait}) = _$AppStateImpl;
@@ -296,6 +330,8 @@ abstract class _AppState implements AppState {
   CompleteProfileState? get completeProfileState;
   @override
   ConnectivityState? get connectivityState;
+  @override
+  ChatState? get chatState;
   @override
   MiscState? get miscState;
   @override
