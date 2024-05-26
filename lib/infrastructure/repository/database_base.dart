@@ -20,6 +20,7 @@ enum Tables {
   userProfileState,
   completeProfileState,
   connectivityState,
+  chatState,
   miscState,
   unknown,
 }
@@ -33,6 +34,8 @@ extension TablesEx on Tables {
         return 'completeProfileState';
       case Tables.connectivityState:
         return 'connectivityState';
+      case Tables.chatState:
+        return 'chatState';
       case Tables.miscState:
         return 'miscState';
       default:

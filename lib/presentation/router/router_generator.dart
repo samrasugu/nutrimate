@@ -26,6 +26,11 @@ class RouteGenerator {
           builder: (_) => const SignUpPage(),
           settings: const RouteSettings(name: 'SignUp Page'),
         );
+      case Routes.login:
+        return MaterialPageRoute<LoginPage>(
+          builder: (_) => const LoginPage(),
+          settings: const RouteSettings(name: 'Login Page'),
+        );
       case Routes.selectOnboarding:
         return MaterialPageRoute<SelectOnboardingPage>(
           builder: (_) => const SelectOnboardingPage(),

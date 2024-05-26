@@ -16,11 +16,9 @@ import 'package:nutrimate/presentation/router/routes.dart';
 
 class LoginAction extends ReduxAction<AppState> {
   final LoginPayload loginPayload;
-  // final VoidCallback? onSuccess;
 
   LoginAction({
     required this.loginPayload,
-    // required this.onSuccess,
   });
 
   @override
@@ -53,31 +51,34 @@ class LoginAction extends ReduxAction<AppState> {
     final UserSignUpResponse? userSignUpResponse =
         signUpResponse.userSignUpResponse;
 
-    User user = User(
-      id: userSignUpResponse?.id,
-      firstname: userSignUpResponse?.firstName,
-      lastname: userSignUpResponse?.lastName,
-      email: userSignUpResponse?.email,
-    );
-
-    if (response.statusCode == 200) {
-      dispatch(
-        UpdateUserProfileStateAction(
-          user: user,
-          isSignedIn: true,
-        ),
+    if (userSignUpResponse != null) {
+      User user = User(
+        id: userSignUpResponse.id,
+        firstname: userSignUpResponse.firstName,
+        lastname: userSignUpResponse.lastName,
+        email: userSignUpResponse.email,
       );
 
-      // TODO: dispatch action to fetch and update user profile
-      // Replace with aciton to update user profile
+      if (response.statusCode == 200) {
+        dispatch(
+          UpdateUserProfileStateAction(
+            user: user,
+            isSignedIn: true,
+          ),
+        );
 
-      dispatch(
-        NavigateAction<AppState>.pushNamedAndRemoveUntil(
-          Routes.home,
-          (Route<dynamic> route) => false,
-        ),
-      );
-      // onSuccess?.call();
+        // TODO: dispatch action to fetch and update user profile
+        // Replace with aciton to update user profile
+
+        dispatch(
+          NavigateAction<AppState>.pushNamedAndRemoveUntil(
+            Routes.chat,
+            (Route<dynamic> route) => false,
+          ),
+        );
+      } else {
+        throw const UserException(failedToLogin);
+      }
     } else if (response.statusCode == 400) {
       throw const UserException(invalidCredentials);
     } else {

@@ -37,9 +37,10 @@ class NutriMateDatabaseMobile<T extends DatabaseExecutor>
     final int t1 = await countTableRecords(Tables.userProfileState.name);
     final int t2 = await countTableRecords(Tables.completeProfileState.name);
     final int t3 = await countTableRecords(Tables.connectivityState.name);
+    final int t5 = await countTableRecords(Tables.chatState.name);
     final int t4 = await countTableRecords(Tables.miscState.name);
 
-    final int counts = t1 + t2 + t3 + t4;
+    final int counts = t1 + t2 + t3 + t4 + t5;
 
     if (counts > 0) {
       return false;

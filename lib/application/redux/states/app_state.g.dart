@@ -20,6 +20,9 @@ _$AppStateImpl _$$AppStateImplFromJson(Map<String, dynamic> json) =>
           ? null
           : ConnectivityState.fromJson(
               json['connectivityState'] as Map<String, dynamic>),
+      chatState: json['chatState'] == null
+          ? null
+          : ChatState.fromJson(json['chatState'] as Map<String, dynamic>),
       miscState: json['miscState'] == null
           ? null
           : MiscState.fromJson(json['miscState'] as Map<String, dynamic>),
@@ -30,5 +33,6 @@ Map<String, dynamic> _$$AppStateImplToJson(_$AppStateImpl instance) =>
       'userProfileState': instance.userProfileState,
       'completeProfileState': instance.completeProfileState,
       'connectivityState': instance.connectivityState,
+      'chatState': instance.chatState,
       'miscState': instance.miscState,
     };
