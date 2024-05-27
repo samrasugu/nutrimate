@@ -15,6 +15,7 @@ import 'package:nutrimate/presentation/global/spaces.dart';
 import 'package:nutrimate/presentation/global/text_themes.dart';
 import 'package:nutrimate/presentation/global/widgets/platform_loader.dart';
 import 'package:nutrimate/presentation/onboarding/signup/sign_up_form_manager.dart';
+import 'package:nutrimate/presentation/router/routes.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({super.key});
@@ -45,7 +46,7 @@ class _SignUpPageState extends State<SignUpPage> {
       SignUpAction(
         signUpPayload: _signUpFormManager.submit(),
         onSuccess: () {
-          // Navigator.of(context).pushNamed(Routes.onboardingIntro);
+          Navigator.of(context).pushNamed(Routes.signUpSuccess);
         },
       ),
     );
@@ -67,7 +68,6 @@ class _SignUpPageState extends State<SignUpPage> {
                   children: <Widget>[
                     Column(
                       children: <Widget>[
-                        // largeVerticalSizedBox,
                         Center(
                           child: SvgPicture.asset(
                             signUpSvgPath,
@@ -255,7 +255,25 @@ class _SignUpPageState extends State<SignUpPage> {
                             },
                           ),
                         ),
-                        size70VerticalSizedBox,
+                        largeVerticalSizedBox,
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            Text(
+                              dontHaveAnAccountText,
+                              style: normalSize16Text(AppColors.blackColor),
+                            ),
+                            TextButton(
+                              onPressed: () {
+                                Navigator.of(context).pushNamed(Routes.login);
+                              },
+                              child: Text(
+                                signUpText,
+                                style: boldSize16Text(AppColors.primaryColor),
+                              ),
+                            ),
+                          ],
+                        ),
                       ],
                     ),
                   ],

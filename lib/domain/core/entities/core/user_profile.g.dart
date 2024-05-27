@@ -14,8 +14,8 @@ _$UserProfileImpl _$$UserProfileImplFromJson(Map<String, dynamic> json) =>
       illnesses: (json['illnesses'] as List<dynamic>?)
           ?.map((e) => e as String)
           .toList(),
-      weight: (json['weight'] as num?)?.toDouble(),
-      height: (json['height'] as num?)?.toDouble(),
+      weight: json['weight'] as String?,
+      height: json['height'] as String?,
       location: json['location'] as String?,
       foodPreferences: (json['food_preferences'] as List<dynamic>?)
           ?.map((e) => e as String)

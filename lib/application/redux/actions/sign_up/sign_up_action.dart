@@ -15,7 +15,7 @@ import 'package:nutrimate/infrastructure/endpoints.dart';
 
 class SignUpAction extends ReduxAction<AppState> {
   final SignUpPayload signUpPayload;
-  final VoidCallback onSuccess;
+  final VoidCallback? onSuccess;
 
   SignUpAction({
     required this.signUpPayload,
@@ -67,7 +67,7 @@ class SignUpAction extends ReduxAction<AppState> {
           isSignedIn: true,
         ),
       );
-      // onSuccess();
+      onSuccess?.call();
     } else {
       throw const UserException(failedToSignUp);
     }

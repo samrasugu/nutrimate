@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nutrimate/presentation/chat/pages/chat_bot_page.dart';
 import 'package:nutrimate/presentation/home/pages/home_page.dart';
+import 'package:nutrimate/presentation/onboarding/complete_profile/pages/complete_profile_success_page.dart';
 import 'package:nutrimate/presentation/onboarding/complete_profile/pages/search_diseases_page.dart';
 import 'package:nutrimate/presentation/onboarding/complete_profile/pages/set_basic_info_page.dart';
 import 'package:nutrimate/presentation/onboarding/complete_profile/pages/set_location_page.dart';
@@ -9,6 +10,7 @@ import 'package:nutrimate/presentation/onboarding/login/pages/login_page.dart';
 import 'package:nutrimate/presentation/onboarding/onboarding_intro/pages/onboarding_intro_page.dart';
 import 'package:nutrimate/presentation/onboarding/select_onboarding/pages/select_onboarding_page.dart';
 import 'package:nutrimate/presentation/onboarding/signup/pages/sign_up_page.dart';
+import 'package:nutrimate/presentation/onboarding/signup/pages/sign_up_success_page.dart';
 import 'package:nutrimate/presentation/profile/pages/settings_page.dart';
 import 'package:nutrimate/presentation/router/routes.dart';
 
@@ -69,6 +71,16 @@ class RouteGenerator {
         return MaterialPageRoute<SettingsPage>(
           builder: (_) => const SettingsPage(),
           settings: const RouteSettings(name: 'Settings Page'),
+        );
+      case Routes.signUpSuccess:
+        return MaterialPageRoute<SignUpSuccessPage>(
+          builder: (_) => const SignUpSuccessPage(),
+          settings: const RouteSettings(name: 'Sign Up Success Page'),
+        );
+      case Routes.completeProfileSuccess:
+        return MaterialPageRoute<CompleteProfileSuccessPage>(
+          builder: (_) => const CompleteProfileSuccessPage(),
+          settings: const RouteSettings(name: 'Complete Profile Success Page'),
         );
       default:
         return MaterialPageRoute<LoginPage>(

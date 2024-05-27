@@ -34,7 +34,9 @@ class CustomSelectField extends StatelessWidget {
             ),
           )
           .toList(),
-      onChanged: onChanged,
+      onChanged: (String? value) {
+        onChanged?.call(value);
+      },
       onSaved: onSaved,
       validator: validator,
       value: value,

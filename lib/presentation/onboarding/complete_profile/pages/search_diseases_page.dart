@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:nutrimate/application/redux/actions/diseases/search_diseases_action.dart';
 import 'package:nutrimate/application/redux/actions/diseases/update_search_diseases_action.dart';
+import 'package:nutrimate/application/redux/actions/update_complete_profile_state_action.dart';
 import 'package:nutrimate/application/redux/flags/flags.dart';
 import 'package:nutrimate/application/redux/states/app_state.dart';
 import 'package:nutrimate/application/redux/view_models/search_diseases_view_model.dart';
@@ -173,12 +174,24 @@ class _SearchDiseasesPageState extends State<SearchDiseasesPage> {
                       width: double.infinity,
                       child: CustomButton(
                         onPressed: () {
-                          // TODO: Navigate user to success page
-                          // Navigator.pushNamed(
-                          //   context,
-                          //   Routes.setLocationAndPreferences,
-                          // );
-                          // submit(); -- function {update complete profile state, then navigate user}
+                          // update selected diseases in store
+                          context.dispatch(
+                            // UpdateSearchDiseasesStateAction(
+                            //   selectedDiseases: vm.selectedDiseases,
+                            // ),
+                            UpdateCompleteProfileStateAction(
+                              initialRoute: Routes.completeProfileSuccess,
+                              illnesses: vm.selectedDiseases!
+                                  .map((Disease? disease) => disease?.name)
+                                  .where((String? name) => name != null)
+                                  .cast<String>()
+                                  .toList(),
+                            ),
+                          );
+                          Navigator.pushNamed(
+                            context,
+                            Routes.completeProfileSuccess,
+                          );
                         },
                         fillColor: AppColors.primaryColor,
                         customBorderRadius: 25,
