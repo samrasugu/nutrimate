@@ -176,9 +176,6 @@ class _SearchDiseasesPageState extends State<SearchDiseasesPage> {
                         onPressed: () {
                           // update selected diseases in store
                           context.dispatch(
-                            // UpdateSearchDiseasesStateAction(
-                            //   selectedDiseases: vm.selectedDiseases,
-                            // ),
                             UpdateCompleteProfileStateAction(
                               initialRoute: Routes.completeProfileSuccess,
                               illnesses: vm.selectedDiseases!

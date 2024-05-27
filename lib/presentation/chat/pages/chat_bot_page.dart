@@ -9,6 +9,7 @@ import 'package:nutrimate/application/redux/view_models/chat_page_view_model.dar
 import 'package:nutrimate/domain/core/entities/message/message.dart';
 import 'package:nutrimate/domain/core/value_objects/app_strings.dart';
 import 'package:nutrimate/domain/core/value_objects/asset_strings.dart';
+import 'package:nutrimate/domain/core/value_objects/enums.dart';
 import 'package:nutrimate/presentation/core/theme/theme.dart';
 import 'package:nutrimate/presentation/core/widgets/custom_app_bar.dart';
 import 'package:nutrimate/presentation/core/widgets/custom_text_field.dart';
@@ -28,6 +29,8 @@ class _ChatBotPageState extends State<ChatBotPage> {
 
   TextEditingController messageEditingController = TextEditingController();
 
+  SampleItem? selectedItem;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,11 +46,33 @@ class _ChatBotPageState extends State<ChatBotPage> {
           titleTextStyle: normalSize18Text(
             AppColors.blackColor,
           ),
-          trailingWidget: GestureDetector(
-            onTap: () {
-              Navigator.pushNamed(context, Routes.settings);
+          trailingWidget: PopupMenuButton<SampleItem>(
+            initialValue: selectedItem,
+            color: AppColors.whiteColor,
+            surfaceTintColor: AppColors.whiteColor,
+            onSelected: (SampleItem item) {
+              setState(() {
+                selectedItem = item;
+              });
             },
-            child: const Icon(Icons.more_horiz_rounded, size: 30),
+            itemBuilder: (BuildContext context) => <PopupMenuEntry<SampleItem>>[
+              PopupMenuItem<SampleItem>(
+                value: SampleItem.itemOne,
+                child: GestureDetector(
+                  onTap: () {},
+                  child: const Text('Clear Chat'),
+                ),
+              ),
+              PopupMenuItem<SampleItem>(
+                value: SampleItem.itemTwo,
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.pushNamed(context, Routes.settings);
+                  },
+                  child: const Text('Settings'),
+                ),
+              ),
+            ],
           ),
           onBackButtonPressed: () {
             Navigator.pop(context);
