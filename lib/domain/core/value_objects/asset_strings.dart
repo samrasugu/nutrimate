@@ -12,3 +12,6 @@ const String backButtonSvgPath = 'assets/icons/chevron_back.svg';
 const String chatIconSvgPath = 'assets/icons/chat_icon.svg';
 const String xIconSvgPath = 'assets/icons/x_icon.svg';
 const String sendMessageIconSvgPath = 'assets/icons/send_message_icon.svg';
+
+const String signUpSuccessSvgPath = 'assets/images/signup_success.svg';
+const String profileCompleteSvgPath = 'assets/images/profile_complete.svg';

@@ -29,9 +29,9 @@ mixin _$UserProfile {
   @JsonKey(name: 'illnesses')
   List<String>? get illnesses => throw _privateConstructorUsedError;
   @JsonKey(name: 'weight')
-  double? get weight => throw _privateConstructorUsedError;
+  String? get weight => throw _privateConstructorUsedError;
   @JsonKey(name: 'height')
-  double? get height => throw _privateConstructorUsedError;
+  String? get height => throw _privateConstructorUsedError;
   @JsonKey(name: 'location')
   String? get location => throw _privateConstructorUsedError;
   @JsonKey(name: 'food_preferences')
@@ -56,8 +56,8 @@ abstract class $UserProfileCopyWith<$Res> {
       @JsonKey(name: 'age') String? age,
       @JsonKey(name: 'gender') String? gender,
       @JsonKey(name: 'illnesses') List<String>? illnesses,
-      @JsonKey(name: 'weight') double? weight,
-      @JsonKey(name: 'height') double? height,
+      @JsonKey(name: 'weight') String? weight,
+      @JsonKey(name: 'height') String? height,
       @JsonKey(name: 'location') String? location,
       @JsonKey(name: 'food_preferences') List<String>? foodPreferences,
       @JsonKey(name: 'user_id') String? userId});
@@ -106,11 +106,11 @@ class _$UserProfileCopyWithImpl<$Res, $Val extends UserProfile>
       weight: freezed == weight
           ? _value.weight
           : weight // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as String?,
       height: freezed == height
           ? _value.height
           : height // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as String?,
       location: freezed == location
           ? _value.location
           : location // ignore: cast_nullable_to_non_nullable
@@ -140,8 +140,8 @@ abstract class _$$UserProfileImplCopyWith<$Res>
       @JsonKey(name: 'age') String? age,
       @JsonKey(name: 'gender') String? gender,
       @JsonKey(name: 'illnesses') List<String>? illnesses,
-      @JsonKey(name: 'weight') double? weight,
-      @JsonKey(name: 'height') double? height,
+      @JsonKey(name: 'weight') String? weight,
+      @JsonKey(name: 'height') String? height,
       @JsonKey(name: 'location') String? location,
       @JsonKey(name: 'food_preferences') List<String>? foodPreferences,
       @JsonKey(name: 'user_id') String? userId});
@@ -188,11 +188,11 @@ class __$$UserProfileImplCopyWithImpl<$Res>
       weight: freezed == weight
           ? _value.weight
           : weight // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as String?,
       height: freezed == height
           ? _value.height
           : height // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as String?,
       location: freezed == location
           ? _value.location
           : location // ignore: cast_nullable_to_non_nullable
@@ -250,10 +250,10 @@ class _$UserProfileImpl implements _UserProfile {
 
   @override
   @JsonKey(name: 'weight')
-  final double? weight;
+  final String? weight;
   @override
   @JsonKey(name: 'height')
-  final double? height;
+  final String? height;
   @override
   @JsonKey(name: 'location')
   final String? location;
@@ -330,8 +330,8 @@ abstract class _UserProfile implements UserProfile {
       @JsonKey(name: 'age') final String? age,
       @JsonKey(name: 'gender') final String? gender,
       @JsonKey(name: 'illnesses') final List<String>? illnesses,
-      @JsonKey(name: 'weight') final double? weight,
-      @JsonKey(name: 'height') final double? height,
+      @JsonKey(name: 'weight') final String? weight,
+      @JsonKey(name: 'height') final String? height,
       @JsonKey(name: 'location') final String? location,
       @JsonKey(name: 'food_preferences') final List<String>? foodPreferences,
       @JsonKey(name: 'user_id') final String? userId}) = _$UserProfileImpl;
@@ -353,10 +353,10 @@ abstract class _UserProfile implements UserProfile {
   List<String>? get illnesses;
   @override
   @JsonKey(name: 'weight')
-  double? get weight;
+  String? get weight;
   @override
   @JsonKey(name: 'height')
-  double? get height;
+  String? get height;
   @override
   @JsonKey(name: 'location')
   String? get location;

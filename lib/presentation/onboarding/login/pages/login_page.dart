@@ -15,6 +15,7 @@ import 'package:nutrimate/presentation/global/spaces.dart';
 import 'package:nutrimate/presentation/global/text_themes.dart';
 import 'package:nutrimate/presentation/global/widgets/platform_loader.dart';
 import 'package:nutrimate/presentation/onboarding/login/login_form_manager.dart';
+import 'package:nutrimate/presentation/router/routes.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -218,6 +219,25 @@ class _LoginPageState extends State<LoginPage> {
                               );
                             },
                           ),
+                        ),
+                        largeVerticalSizedBox,
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            Text(
+                              dontHaveAnAccountText,
+                              style: normalSize16Text(AppColors.blackColor),
+                            ),
+                            TextButton(
+                              onPressed: () {
+                                Navigator.of(context).pushNamed(Routes.signup);
+                              },
+                              child: Text(
+                                signUpText,
+                                style: boldSize16Text(AppColors.primaryColor),
+                              ),
+                            ),
+                          ],
                         ),
                       ],
                     ),

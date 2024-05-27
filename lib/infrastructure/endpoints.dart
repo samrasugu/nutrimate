@@ -6,3 +6,5 @@ const String recommendUrl = '$baseUrl:8000/recommend';
 
 const String searchDiseasesUrl = '$baseUrl:8000/get_disease';
 const String searchLocationUrl = '$baseUrl:8000/get_location';
+
+const String completeProfileUrl = '$baseUrl:8000/create_profile';

@@ -85,3 +85,12 @@ const String appVersion =
     String.fromEnvironment('APPVERSION', defaultValue: 'development');
 
 const String version = 'Version';
+
+const String signUpSuccessText = 'Sign Up Successful!';
+const String signUpSuccessDesc =
+    'Now complete profile to get more personalised recommendations';
+const String completeProfileText = 'Complete Profile';
+
+const String allSetUpText = 'You are all set up!';
+const String allSetUpDesc =
+    'Now you can start exploring and get the best out of your nutrition journey';

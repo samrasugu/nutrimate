@@ -9,6 +9,9 @@ class Routes {
   static const String setLocation = '/setLocationAndPreferences';
   static const String searchDiseases = '/searchDiseases';
 
+  static const String signUpSuccess = '/signupSuccess';
+  static const String completeProfileSuccess = '/completeProfileSuccess';
+
   // chat
   static const String chat = '/chat';
 

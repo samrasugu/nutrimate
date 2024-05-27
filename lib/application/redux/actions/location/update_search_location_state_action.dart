@@ -24,6 +24,11 @@ class UpdateSearchLocationStateAction extends ReduxAction<AppState> {
     final AppState newState = state.copyWith(
       miscState: state.miscState
           ?.copyWith(searchLocationState: newSearchLocationState),
+      userProfileState: state.userProfileState?.copyWith(
+        userProfile: state.userProfileState?.userProfile?.copyWith(
+          location: selectedLocation.toString(),
+        ),
+      ),
     );
 
     return newState;

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:nutrimate/application/core/services/utils.dart';
 import 'package:nutrimate/application/redux/actions/location/search_location_action.dart';
 import 'package:nutrimate/application/redux/actions/location/update_search_location_state_action.dart';
+import 'package:nutrimate/application/redux/actions/update_complete_profile_state_action.dart';
 import 'package:nutrimate/application/redux/flags/flags.dart';
 import 'package:nutrimate/application/redux/states/app_state.dart';
 import 'package:nutrimate/application/redux/view_models/search_location_view_model.dart';
@@ -193,7 +194,15 @@ class _SetLocationPageState extends State<SetLocationPage> {
                           ),
                         ),
                       ),
-                      onChanged: (String? newValue) {},
+                      onChanged: (String? newValue) {
+                        context.dispatch(
+                          UpdateCompleteProfileStateAction(
+                            initialRoute: Routes.searchDiseases,
+                            location: vm.selectedLocation?.name.toString(),
+                            foodPreferences: <String>[newValue ?? ''],
+                          ),
+                        );
+                      },
                     ),
                     size70VerticalSizedBox,
                     SizedBox(
@@ -203,7 +212,7 @@ class _SetLocationPageState extends State<SetLocationPage> {
                         onPressed: () {
                           Navigator.pushNamed(
                             context,
-                            Routes.setLocation,
+                            Routes.searchDiseases,
                           );
                         },
                         fillColor: AppColors.primaryColor,
