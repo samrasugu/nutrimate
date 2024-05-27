@@ -9,12 +9,11 @@ import 'package:nutrimate/presentation/onboarding/login/pages/login_page.dart';
 import 'package:nutrimate/presentation/onboarding/onboarding_intro/pages/onboarding_intro_page.dart';
 import 'package:nutrimate/presentation/onboarding/select_onboarding/pages/select_onboarding_page.dart';
 import 'package:nutrimate/presentation/onboarding/signup/pages/sign_up_page.dart';
+import 'package:nutrimate/presentation/profile/pages/settings_page.dart';
 import 'package:nutrimate/presentation/router/routes.dart';
 
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
-    // final dynamic args = settings.arguments;
-
     switch (settings.name) {
       case Routes.home:
         return MaterialPageRoute<HomePage>(
@@ -65,6 +64,11 @@ class RouteGenerator {
         return MaterialPageRoute<SearchDiseasesPage>(
           builder: (_) => const SearchDiseasesPage(),
           settings: const RouteSettings(name: 'Search Diseases Page'),
+        );
+      case Routes.settings:
+        return MaterialPageRoute<SettingsPage>(
+          builder: (_) => const SettingsPage(),
+          settings: const RouteSettings(name: 'Settings Page'),
         );
       default:
         return MaterialPageRoute<LoginPage>(

@@ -14,6 +14,7 @@ import 'package:nutrimate/presentation/core/widgets/custom_app_bar.dart';
 import 'package:nutrimate/presentation/core/widgets/custom_text_field.dart';
 import 'package:nutrimate/presentation/global/spaces.dart';
 import 'package:nutrimate/presentation/global/text_themes.dart';
+import 'package:nutrimate/presentation/router/routes.dart';
 
 class ChatBotPage extends StatefulWidget {
   const ChatBotPage({super.key});
@@ -43,6 +44,9 @@ class _ChatBotPageState extends State<ChatBotPage> {
             AppColors.blackColor,
           ),
           trailingWidget: GestureDetector(
+            onTap: () {
+              Navigator.pushNamed(context, Routes.settings);
+            },
             child: const Icon(Icons.more_horiz_rounded, size: 30),
           ),
           onBackButtonPressed: () {

@@ -76,3 +76,12 @@ const String haveIllnessQuestionText = 'Do you have any illnesses?';
 const String haveIllnessQuestionDesc =
     'This will guide us in giving you the appropriate meal recommendations according to your health state.';
 const String searchString = 'Search';
+
+const String settingsText = 'Settings';
+const String logOutText = 'Logout';
+const String profileText = 'Profile';
+
+const String appVersion =
+    String.fromEnvironment('APPVERSION', defaultValue: 'development');
+
+const String version = 'Version';
