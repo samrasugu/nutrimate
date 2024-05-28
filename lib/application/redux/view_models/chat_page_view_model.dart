@@ -4,15 +4,17 @@ import 'package:nutrimate/domain/core/entities/message/message.dart';
 
 class ChatPageViewModel extends Vm {
   final List<Message?>? messages;
-  final Wait wait;
+  final String? sessionId;
+  final Wait? wait;
 
-  ChatPageViewModel({this.messages, required this.wait})
-      : super(equals: <Object?>[messages, wait]);
+  ChatPageViewModel({this.messages, this.sessionId, required this.wait})
+      : super(equals: <Object?>[messages, sessionId, wait]);
 
   static ChatPageViewModel fromStore(Store<AppState> store) {
     return ChatPageViewModel(
-      wait: store.state.wait ?? Wait(),
+      wait: store.state.wait,
       messages: store.state.chatState?.messages,
+      sessionId: store.state.chatState?.sessionId,
     );
   }
 }

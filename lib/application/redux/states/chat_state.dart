@@ -8,6 +8,7 @@ part 'chat_state.g.dart';
 class ChatState with _$ChatState {
   factory ChatState({
     List<Message?>? messages,
+    String? sessionId,
   }) = _ChatState;
 
   factory ChatState.fromJson(Map<String, dynamic> json) =>
@@ -15,5 +16,6 @@ class ChatState with _$ChatState {
 
   factory ChatState.initial() => ChatState(
         messages: <Message>[],
+        sessionId: '',
       );
 }

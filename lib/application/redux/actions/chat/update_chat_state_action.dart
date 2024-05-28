@@ -3,21 +3,22 @@ import 'package:nutrimate/application/redux/states/app_state.dart';
 import 'package:nutrimate/application/redux/states/chat_state.dart';
 import 'package:nutrimate/domain/core/entities/message/message.dart';
 
-class UpdateChatMessagesAction extends ReduxAction<AppState> {
+class UpdateChatStateAction extends ReduxAction<AppState> {
   final List<Message?>? messages;
 
-  UpdateChatMessagesAction({
+  UpdateChatStateAction({
     this.messages,
   });
 
   @override
   AppState reduce() {
-    final ChatState newChatMessagesState = ChatState(
+    final ChatState newChatState = ChatState(
       messages: messages ?? state.chatState?.messages,
+      sessionId: state.chatState?.sessionId,
     );
 
     final AppState newState = state.copyWith(
-      chatState: newChatMessagesState,
+      chatState: newChatState,
     );
 
     return newState;
