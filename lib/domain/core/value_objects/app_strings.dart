@@ -94,3 +94,5 @@ const String completeProfileText = 'Complete Profile';
 const String allSetUpText = 'You are all set up!';
 const String allSetUpDesc =
     'Now you can start exploring and get the best out of your nutrition journey';
+
+const String clearChatText = 'Clear Chat';

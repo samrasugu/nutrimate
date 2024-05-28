@@ -21,6 +21,7 @@ ChatState _$ChatStateFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$ChatState {
   List<Message?>? get messages => throw _privateConstructorUsedError;
+  String? get sessionId => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -33,7 +34,7 @@ abstract class $ChatStateCopyWith<$Res> {
   factory $ChatStateCopyWith(ChatState value, $Res Function(ChatState) then) =
       _$ChatStateCopyWithImpl<$Res, ChatState>;
   @useResult
-  $Res call({List<Message?>? messages});
+  $Res call({List<Message?>? messages, String? sessionId});
 }
 
 /// @nodoc
@@ -50,12 +51,17 @@ class _$ChatStateCopyWithImpl<$Res, $Val extends ChatState>
   @override
   $Res call({
     Object? messages = freezed,
+    Object? sessionId = freezed,
   }) {
     return _then(_value.copyWith(
       messages: freezed == messages
           ? _value.messages
           : messages // ignore: cast_nullable_to_non_nullable
               as List<Message?>?,
+      sessionId: freezed == sessionId
+          ? _value.sessionId
+          : sessionId // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -68,7 +74,7 @@ abstract class _$$ChatStateImplCopyWith<$Res>
       __$$ChatStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<Message?>? messages});
+  $Res call({List<Message?>? messages, String? sessionId});
 }
 
 /// @nodoc
@@ -83,12 +89,17 @@ class __$$ChatStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? messages = freezed,
+    Object? sessionId = freezed,
   }) {
     return _then(_$ChatStateImpl(
       messages: freezed == messages
           ? _value._messages
           : messages // ignore: cast_nullable_to_non_nullable
               as List<Message?>?,
+      sessionId: freezed == sessionId
+          ? _value.sessionId
+          : sessionId // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -96,7 +107,8 @@ class __$$ChatStateImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$ChatStateImpl implements _ChatState {
-  _$ChatStateImpl({final List<Message?>? messages}) : _messages = messages;
+  _$ChatStateImpl({final List<Message?>? messages, this.sessionId})
+      : _messages = messages;
 
   factory _$ChatStateImpl.fromJson(Map<String, dynamic> json) =>
       _$$ChatStateImplFromJson(json);
@@ -112,8 +124,11 @@ class _$ChatStateImpl implements _ChatState {
   }
 
   @override
+  final String? sessionId;
+
+  @override
   String toString() {
-    return 'ChatState(messages: $messages)';
+    return 'ChatState(messages: $messages, sessionId: $sessionId)';
   }
 
   @override
@@ -121,13 +136,15 @@ class _$ChatStateImpl implements _ChatState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ChatStateImpl &&
-            const DeepCollectionEquality().equals(other._messages, _messages));
+            const DeepCollectionEquality().equals(other._messages, _messages) &&
+            (identical(other.sessionId, sessionId) ||
+                other.sessionId == sessionId));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_messages));
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_messages), sessionId);
 
   @JsonKey(ignore: true)
   @override
@@ -144,13 +161,17 @@ class _$ChatStateImpl implements _ChatState {
 }
 
 abstract class _ChatState implements ChatState {
-  factory _ChatState({final List<Message?>? messages}) = _$ChatStateImpl;
+  factory _ChatState(
+      {final List<Message?>? messages,
+      final String? sessionId}) = _$ChatStateImpl;
 
   factory _ChatState.fromJson(Map<String, dynamic> json) =
       _$ChatStateImpl.fromJson;
 
   @override
   List<Message?>? get messages;
+  @override
+  String? get sessionId;
   @override
   @JsonKey(ignore: true)
   _$$ChatStateImplCopyWith<_$ChatStateImpl> get copyWith =>

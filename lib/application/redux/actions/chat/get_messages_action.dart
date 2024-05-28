@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:async_redux/async_redux.dart';
 import 'package:http/http.dart';
-import 'package:nutrimate/application/redux/actions/chat/update_chat_messages_action.dart';
+import 'package:nutrimate/application/redux/actions/chat/update_chat_state_action.dart';
 import 'package:nutrimate/application/redux/flags/flags.dart';
 import 'package:nutrimate/application/redux/states/app_state.dart';
 import 'package:nutrimate/domain/core/entities/message/message.dart';
@@ -10,9 +10,11 @@ import 'package:nutrimate/infrastructure/endpoints.dart';
 
 class GetMessagesAction extends ReduxAction<AppState> {
   final String query;
+  final String sessionId;
 
   GetMessagesAction({
     required this.query,
+    required this.sessionId,
   });
 
   @override
@@ -29,6 +31,7 @@ class GetMessagesAction extends ReduxAction<AppState> {
   Future<AppState?> reduce() async {
     final Map<String, dynamic> variables = <String, dynamic>{
       'message': query,
+      'session_id': sessionId,
     };
 
     final Response response = await post(
@@ -58,7 +61,7 @@ class GetMessagesAction extends ReduxAction<AppState> {
       updatedMessages.add(message);
 
       dispatch(
-        UpdateChatMessagesAction(
+        UpdateChatStateAction(
           messages: updatedMessages,
         ),
       );

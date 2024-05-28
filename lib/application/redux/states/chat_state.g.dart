@@ -12,9 +12,11 @@ _$ChatStateImpl _$$ChatStateImplFromJson(Map<String, dynamic> json) =>
           ?.map((e) =>
               e == null ? null : Message.fromJson(e as Map<String, dynamic>))
           .toList(),
+      sessionId: json['sessionId'] as String?,
     );
 
 Map<String, dynamic> _$$ChatStateImplToJson(_$ChatStateImpl instance) =>
     <String, dynamic>{
       'messages': instance.messages,
+      'sessionId': instance.sessionId,
     };

@@ -1,8 +1,9 @@
 import 'package:async_redux/async_redux.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:nutrimate/application/redux/actions/chat/generate_chat_sessionid_action.dart';
 import 'package:nutrimate/application/redux/actions/chat/get_messages_action.dart';
-import 'package:nutrimate/application/redux/actions/chat/update_chat_messages_action.dart';
+import 'package:nutrimate/application/redux/actions/chat/update_chat_state_action.dart';
 import 'package:nutrimate/application/redux/flags/flags.dart';
 import 'package:nutrimate/application/redux/states/app_state.dart';
 import 'package:nutrimate/application/redux/view_models/chat_page_view_model.dart';
@@ -60,7 +61,7 @@ class _ChatBotPageState extends State<ChatBotPage> {
                 value: SampleItem.itemOne,
                 child: GestureDetector(
                   onTap: () {},
-                  child: const Text('Clear Chat'),
+                  child: const Text(clearChatText),
                 ),
               ),
               PopupMenuItem<SampleItem>(
@@ -69,7 +70,7 @@ class _ChatBotPageState extends State<ChatBotPage> {
                   onTap: () {
                     Navigator.pushNamed(context, Routes.settings);
                   },
-                  child: const Text('Settings'),
+                  child: const Text(settingsText),
                 ),
               ),
             ],
@@ -83,6 +84,14 @@ class _ChatBotPageState extends State<ChatBotPage> {
         child: StoreConnector<AppState, ChatPageViewModel>(
           converter: (Store<AppState> store) =>
               ChatPageViewModel.fromStore(store),
+          onInit: (Store<AppState> store) async {
+            if (store.state.chatState?.sessionId == null ||
+                store.state.chatState?.sessionId == '') {
+              await store.dispatch(
+                GenerateChatSessionIdAction(),
+              );
+            }
+          },
           builder: (BuildContext context, ChatPageViewModel vm) {
             final List<Message?>? messages = vm.messages;
             return Column(
@@ -140,7 +149,7 @@ class _ChatBotPageState extends State<ChatBotPage> {
                           focusedBorderColor: AppColors.primaryColor,
                           customFillColor: AppColors.whiteColor,
                           enabled:
-                              vm.wait.isWaiting(getMessageFlag) ? false : true,
+                              vm.wait!.isWaiting(getMessageFlag) ? false : true,
                         ),
                       ),
                       smallHorizontalSizedBox,
@@ -153,9 +162,11 @@ class _ChatBotPageState extends State<ChatBotPage> {
                             // Get the existing messages and determine the next ID
                             final List<Message?> existingMessages =
                                 List<Message?>.from(vm.messages ?? <Message>[]);
-                            final String nextId =
-                                (int.parse(existingMessages.last?.id ?? '') + 1)
-                                    .toString();
+                            final String nextId = existingMessages.isNotEmpty
+                                ? (int.parse(existingMessages.last?.id ?? '0') +
+                                        1)
+                                    .toString()
+                                : '1';
 
                             Message message = Message(
                               id: nextId,
@@ -165,21 +176,26 @@ class _ChatBotPageState extends State<ChatBotPage> {
                             modifiableList.add(message);
 
                             context.dispatch(
-                              UpdateChatMessagesAction(
+                              UpdateChatStateAction(
                                 messages: modifiableList,
                               ),
                             );
 
-                            context.dispatch(
-                              GetMessagesAction(
-                                query: messageEditingController.text,
-                              ),
-                            );
+                            final String? sessionId = vm.sessionId;
+
+                            if (sessionId != null || sessionId != '') {
+                              context.dispatch(
+                                GetMessagesAction(
+                                  query: messageEditingController.text,
+                                  sessionId: sessionId ?? '',
+                                ),
+                              );
+                            }
 
                             messageEditingController.clear();
                           }
                         },
-                        child: vm.wait.isWaiting(getMessageFlag)
+                        child: vm.wait!.isWaiting(getMessageFlag)
                             ? const CircularProgressIndicator(
                                 color: AppColors.primaryColor,
                               )
