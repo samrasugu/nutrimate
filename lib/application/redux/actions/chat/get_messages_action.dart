@@ -29,8 +29,17 @@ class GetMessagesAction extends ReduxAction<AppState> {
 
   @override
   Future<AppState?> reduce() async {
+    // add disease and food preference to the query
+
+    String? disease = state.userProfileState?.userProfile?.illnesses?.first;
+    String? foodPreference =
+        state.userProfileState?.userProfile?.foodPreferences?.first;
+
     final Map<String, dynamic> variables = <String, dynamic>{
-      'message': query,
+      'message': query +
+          (disease != null && foodPreference != null
+              ? ' I am $foodPreference. I have $disease'
+              : ''),
       'session_id': sessionId,
     };
 
