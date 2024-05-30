@@ -60,7 +60,17 @@ class _ChatBotPageState extends State<ChatBotPage> {
               PopupMenuItem<SampleItem>(
                 value: SampleItem.itemOne,
                 child: GestureDetector(
-                  onTap: () {},
+                  onTap: () {
+                    context.dispatch(
+                      UpdateChatStateAction(
+                        messages: <Message>[],
+                      ),
+                    );
+                    // generate new session id
+                    context.dispatch(
+                      GenerateChatSessionIdAction(),
+                    );
+                  },
                   child: const Text(clearChatText),
                 ),
               ),
