@@ -15,3 +15,5 @@ const String sendMessageIconSvgPath = 'assets/icons/send_message_icon.svg';
 
 const String signUpSuccessSvgPath = 'assets/images/signup_success.svg';
 const String profileCompleteSvgPath = 'assets/images/profile_complete.svg';
+
+const String defaultAvatarImagePath = 'assets/images/default_avatar.png';
