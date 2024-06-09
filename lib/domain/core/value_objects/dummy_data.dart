@@ -1,0 +1,8 @@
+List<Map<String, dynamic>> chatEntryMessage = <Map<String, dynamic>>[
+  <String, dynamic>{
+    'id': 1,
+    'sender': 'bot',
+    'content':
+        "👋 Welcome to NutriMate. I am NutriBot your Nutrition Assistant! I'm here to help you on your journey to healthier eating. Feel free to ask me anything about nutrition, meal planning, or dietary advice. Let's get started!",
+  }
+];

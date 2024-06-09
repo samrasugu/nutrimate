@@ -10,6 +10,7 @@ import 'package:nutrimate/application/redux/view_models/chat_page_view_model.dar
 import 'package:nutrimate/domain/core/entities/message/message.dart';
 import 'package:nutrimate/domain/core/value_objects/app_strings.dart';
 import 'package:nutrimate/domain/core/value_objects/asset_strings.dart';
+import 'package:nutrimate/domain/core/value_objects/dummy_data.dart';
 import 'package:nutrimate/domain/core/value_objects/enums.dart';
 import 'package:nutrimate/presentation/core/theme/theme.dart';
 import 'package:nutrimate/presentation/core/widgets/custom_app_bar.dart';
@@ -70,6 +71,17 @@ class _ChatBotPageState extends State<ChatBotPage> {
                     context.dispatch(
                       GenerateChatSessionIdAction(),
                     );
+                    Message message = Message(
+                      id: '1',
+                      sender: 'chat_bot',
+                      content: chatEntryMessage.first['content'],
+                    );
+
+                    context.dispatch(
+                      UpdateChatStateAction(
+                        messages: <Message>[message],
+                      ),
+                    );
                   },
                   child: const Text(clearChatText),
                 ),
@@ -95,6 +107,17 @@ class _ChatBotPageState extends State<ChatBotPage> {
           converter: (Store<AppState> store) =>
               ChatPageViewModel.fromStore(store),
           onInit: (Store<AppState> store) async {
+            Message message = Message(
+              id: '1',
+              sender: 'chat_bot',
+              content: chatEntryMessage.first['content'],
+            );
+
+            context.dispatch(
+              UpdateChatStateAction(
+                messages: <Message>[message],
+              ),
+            );
             if (store.state.chatState?.sessionId == null ||
                 store.state.chatState?.sessionId == '') {
               await store.dispatch(
