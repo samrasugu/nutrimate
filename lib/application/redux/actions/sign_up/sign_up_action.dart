@@ -68,6 +68,8 @@ class SignUpAction extends ReduxAction<AppState> {
         ),
       );
       onSuccess?.call();
+    } else if (response.statusCode == 400) {
+      throw UserException(responseBody['error']);
     } else {
       throw const UserException(failedToSignUp);
     }

@@ -36,8 +36,8 @@ class SignUpFormManager with Validator {
             Validator.isValidName(lastName) &&
             Validator.isValidEmail(email) &&
             Validator.isValidPassword(password) 
-            // &&
-            // _isTermsAndConditionsAccepted.value
+            &&
+            _isTermsAndConditionsAccepted.value
             ;
       }).startWith(false);
 

@@ -100,3 +100,8 @@ const String clearChatText = 'Clear Chat';
 const String diseaseNotFoundText = 'Disease with that name not found';
 const String locationNotFoundText = 'Location not found';
 const String unknownErrorText = 'An unknown error occurred';
+
+const String readAndAgreedString = 'I have read and agreed to the ';
+const String termsAndConditionString = 'Terms and Conditions';
+const String termsAgreementString =
+    'By checking this box, I consent to the secure collection, processing, and storage of my personal information as outlined in the ';

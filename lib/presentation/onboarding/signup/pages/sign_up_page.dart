@@ -1,6 +1,8 @@
 import 'package:async_redux/async_redux.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:nutrimate/application/redux/actions/sign_up/sign_up_action.dart';
 import 'package:nutrimate/application/redux/flags/flags.dart';
@@ -26,6 +28,8 @@ class SignUpPage extends StatefulWidget {
 
 class _SignUpPageState extends State<SignUpPage> {
   final SignUpFormManager _signUpFormManager = SignUpFormManager();
+
+  bool isTermsAccepted = false;
 
   void signUp({required bool hasConnection}) {
     if (hasConnection) {
@@ -212,7 +216,51 @@ class _SignUpPageState extends State<SignUpPage> {
                             );
                           },
                         ),
-                        size70VerticalSizedBox,
+                        veryLargeVerticalSizedBox,
+                        Row(
+                          children: <Widget>[
+                            Checkbox(
+                              value: isTermsAccepted,
+                              activeColor: Theme.of(context).primaryColor,
+                              onChanged: (bool? value) async {
+                                setState(() {
+                                  isTermsAccepted = !isTermsAccepted;
+                                  _signUpFormManager
+                                      .inIsTermsAndConditionsAccepted
+                                      .add(isTermsAccepted);
+                                });
+                              },
+                            ),
+                            smallHorizontalSizedBox,
+                            Flexible(
+                              child: GestureDetector(
+                                onTap: () {
+                                  Navigator.of(context)
+                                      .pushNamed(Routes.termsAndConditions);
+                                },
+                                child: RichText(
+                                  text: TextSpan(
+                                    style: normalSize15Text(
+                                      AppColors.blackColor,
+                                    ),
+                                    children: <TextSpan>[
+                                      const TextSpan(
+                                        text: readAndAgreedString,
+                                      ),
+                                      TextSpan(
+                                        text: termsAndConditionString,
+                                        style: normalSize15Text(
+                                          AppColors.primaryColor,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        smallVerticalSizedBox,
                         SizedBox(
                           width: double.infinity,
                           child: StreamBuilder<bool>(
@@ -255,7 +303,7 @@ class _SignUpPageState extends State<SignUpPage> {
                             },
                           ),
                         ),
-                        largeVerticalSizedBox,
+                        mediumVerticalSizedBox,
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[

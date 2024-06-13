@@ -11,6 +11,7 @@ import 'package:nutrimate/presentation/onboarding/onboarding_intro/pages/onboard
 import 'package:nutrimate/presentation/onboarding/select_onboarding/pages/select_onboarding_page.dart';
 import 'package:nutrimate/presentation/onboarding/signup/pages/sign_up_page.dart';
 import 'package:nutrimate/presentation/onboarding/signup/pages/sign_up_success_page.dart';
+import 'package:nutrimate/presentation/onboarding/signup/pages/terms_conditions_page.dart';
 import 'package:nutrimate/presentation/profile/pages/settings_page.dart';
 import 'package:nutrimate/presentation/router/routes.dart';
 
@@ -81,6 +82,11 @@ class RouteGenerator {
         return MaterialPageRoute<CompleteProfileSuccessPage>(
           builder: (_) => const CompleteProfileSuccessPage(),
           settings: const RouteSettings(name: 'Complete Profile Success Page'),
+        );
+      case Routes.termsAndConditions:
+        return MaterialPageRoute<TermsAndConditionsPage>(
+          builder: (_) => const TermsAndConditionsPage(),
+          settings: const RouteSettings(name: 'Terms And Conditions Page'),
         );
       default:
         return MaterialPageRoute<OnboardingIntroPage>(
