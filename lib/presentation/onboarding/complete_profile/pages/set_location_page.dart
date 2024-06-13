@@ -32,11 +32,14 @@ class _SetLocationPageState extends State<SetLocationPage> {
   final TextEditingController searchController = TextEditingController();
 
   void searchLocation(BuildContext context) {
-    context.dispatch(
-      SearchLocationAction(
-        query: searchController.text,
-      ),
-    );
+    if (searchController.text.isNotEmpty) {
+      context.dispatch(
+        SearchLocationAction(
+          query: searchController.text,
+        ),
+      );
+      searchController.clear();
+    }
   }
 
   @override
@@ -53,7 +56,7 @@ class _SetLocationPageState extends State<SetLocationPage> {
             ),
           ),
           onBackButtonPressed: () {
-            Navigator.pushNamed(context, Routes.setMealTimes);
+            Navigator.pushNamed(context, Routes.setBasicInfo);
           },
         ),
       ),
@@ -125,7 +128,7 @@ class _SetLocationPageState extends State<SetLocationPage> {
                         },
                       ),
                     ],
-                    mediumVerticalSizedBox,
+                    smallVerticalSizedBox,
                     Wrap(
                       spacing: 10,
                       runSpacing: 10,
@@ -156,7 +159,8 @@ class _SetLocationPageState extends State<SetLocationPage> {
                     smallVerticalSizedBox,
                     CustomSelectField(
                       items: dietaryPreferences,
-                      hintText: selectString,
+                      hintText: vm.userProfile?.foodPreferences?.first ??
+                          selectString,
                       decoration: InputDecoration(
                         contentPadding: EdgeInsetsGeometry.lerp(
                           const EdgeInsets.all(10),

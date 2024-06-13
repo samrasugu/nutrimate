@@ -14,9 +14,11 @@ import 'package:nutrimate/presentation/router/routes.dart';
 
 class LoginAction extends ReduxAction<AppState> {
   final LoginPayload loginPayload;
+  final VoidCallback onLoginSuccess;
 
   LoginAction({
     required this.loginPayload,
+    required this.onLoginSuccess,
   });
 
   @override
@@ -55,12 +57,9 @@ class LoginAction extends ReduxAction<AppState> {
         ),
       );
 
-      dispatch(
-        NavigateAction<AppState>.pushNamedAndRemoveUntil(
-          Routes.chat,
-          (Route<dynamic> route) => false,
-        ),
-      );
+      onLoginSuccess.call();
+
+      return state;
     } else if (response.statusCode == 400) {
       throw const UserException(invalidCredentials);
     } else if (response.statusCode == 404) {

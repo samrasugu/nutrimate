@@ -18,7 +18,7 @@ class LogoutAction extends ReduxAction<AppState> {
   }
 
   @override
-  Future<AppState> reduce() async {
+  AppState? reduce() {
     final AppState newState = AppState.initial();
 
     return newState;

@@ -31,9 +31,12 @@ class _SearchDiseasesPageState extends State<SearchDiseasesPage> {
   final TextEditingController searchController = TextEditingController();
 
   void searchDiseases(BuildContext context) {
-    context.dispatch(
-      SearchDiseasesAction(query: searchController.text),
-    );
+    if (searchController.text.isNotEmpty) {
+      context.dispatch(
+        SearchDiseasesAction(query: searchController.text),
+      );
+      searchController.clear();
+    }
   }
 
   @override
@@ -51,7 +54,7 @@ class _SearchDiseasesPageState extends State<SearchDiseasesPage> {
             ),
           ),
           onBackButtonPressed: () {
-            Navigator.pushNamed(context, Routes.setMealTimes);
+            Navigator.pushNamed(context, Routes.setLocation);
           },
         ),
       ),
@@ -113,6 +116,7 @@ class _SearchDiseasesPageState extends State<SearchDiseasesPage> {
                       ListView.builder(
                         shrinkWrap: true,
                         itemCount: diseases.length,
+                        physics: const NeverScrollableScrollPhysics(),
                         itemBuilder: (BuildContext context, int index) {
                           return Padding(
                             padding: const EdgeInsets.symmetric(vertical: 5.0),
@@ -140,7 +144,7 @@ class _SearchDiseasesPageState extends State<SearchDiseasesPage> {
                         },
                       ),
                     ],
-                    mediumVerticalSizedBox,
+                    smallVerticalSizedBox,
                     Wrap(
                       spacing: 10,
                       runSpacing: 10,
@@ -168,7 +172,7 @@ class _SearchDiseasesPageState extends State<SearchDiseasesPage> {
                         ),
                       ],
                     ),
-                    size120VerticalSizedBox,
+                    size70VerticalSizedBox,
                     SizedBox(
                       height: 48,
                       width: double.infinity,

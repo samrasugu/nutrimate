@@ -10,14 +10,15 @@ _$DiseaseSearchResponseImpl _$$DiseaseSearchResponseImplFromJson(
         Map<String, dynamic> json) =>
     _$DiseaseSearchResponseImpl(
       message: json['message'] as String?,
-      disease: json['disease'] == null
-          ? null
-          : Disease.fromJson(json['disease'] as Map<String, dynamic>),
+      diseases: (json['diseases'] as List<dynamic>?)
+          ?.map((e) =>
+              e == null ? null : Disease.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$$DiseaseSearchResponseImplToJson(
         _$DiseaseSearchResponseImpl instance) =>
     <String, dynamic>{
       'message': instance.message,
-      'disease': instance.disease,
+      'diseases': instance.diseases,
     };

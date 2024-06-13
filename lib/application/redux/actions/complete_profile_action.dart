@@ -5,6 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 import 'package:nutrimate/application/core/services/utils.dart';
+import 'package:nutrimate/application/redux/actions/auth/update_initial_route_action.dart';
 import 'package:nutrimate/application/redux/actions/update_user_profile_state_action.dart';
 import 'package:nutrimate/application/redux/flags/flags.dart';
 import 'package:nutrimate/application/redux/states/app_state.dart';
@@ -68,7 +69,13 @@ class CompleteProfileAction extends ReduxAction<AppState> {
       dispatch(
         UpdateUserProfileStateAction(
           userProfile: userProfileRes,
+          user: state.userProfileState?.user,
+          isSignedIn: true,
         ),
+      );
+
+      dispatch(
+        UpdateInitialRouteAction(initialRoute: Routes.chat),
       );
 
       dispatch(

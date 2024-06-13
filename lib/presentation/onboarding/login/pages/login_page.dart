@@ -38,6 +38,12 @@ class _LoginPageState extends State<LoginPage> {
         context,
         LoginAction(
           loginPayload: _loginFormManager.submit(),
+          onLoginSuccess: () {
+            Navigator.of(context).pushNamedAndRemoveUntil(
+              Routes.chat,
+              (Route<dynamic> route) => false,
+            );
+          },
         ),
       );
     } else {

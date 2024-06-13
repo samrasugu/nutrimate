@@ -50,31 +50,6 @@ class SelectOnboardingPage extends StatelessWidget {
                   ),
                 ),
                 largeVerticalSizedBox,
-                SizedBox(
-                  height: 50,
-                  width: double.infinity,
-                  child: CustomButton(
-                    borderColor: AppColors.primaryColorLite,
-                    onPressed: () {},
-                    customBorderRadius: 25,
-                    customChild: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        SvgPicture.asset(
-                          googleIconSvgPath,
-                          height: 34,
-                          width: 34,
-                        ),
-                        mediumHorizontalSizedBox,
-                        Text(
-                          continueWithGoogleText,
-                          style: normalSize18Text(AppColors.blackColor),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                largeVerticalSizedBox,
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[

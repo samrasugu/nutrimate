@@ -62,25 +62,21 @@ class _ChatBotPageState extends State<ChatBotPage> {
                 value: SampleItem.itemOne,
                 child: GestureDetector(
                   onTap: () {
+                    // clear chat messages
                     context.dispatch(
                       UpdateChatStateAction(
-                        messages: <Message>[],
+                        messages: <Message>[
+                          Message(
+                            id: '0',
+                            sender: 'chat_bot',
+                            content: chatEntryMessage.first['content'],
+                          ),
+                        ],
                       ),
                     );
                     // generate new session id
                     context.dispatch(
                       GenerateChatSessionIdAction(),
-                    );
-                    Message message = Message(
-                      id: '1',
-                      sender: 'chat_bot',
-                      content: chatEntryMessage.first['content'],
-                    );
-
-                    context.dispatch(
-                      UpdateChatStateAction(
-                        messages: <Message>[message],
-                      ),
                     );
                   },
                   child: const Text(clearChatText),
@@ -107,17 +103,21 @@ class _ChatBotPageState extends State<ChatBotPage> {
           converter: (Store<AppState> store) =>
               ChatPageViewModel.fromStore(store),
           onInit: (Store<AppState> store) async {
-            Message message = Message(
-              id: '1',
-              sender: 'chat_bot',
-              content: chatEntryMessage.first['content'],
-            );
+            // check if chat messages are empty. If empty, add the first message
+            if (store.state.chatState?.messages?.isEmpty ?? true) {
+              Message message = Message(
+                id: '1',
+                sender: 'chat_bot',
+                content: chatEntryMessage.first['content'],
+              );
 
-            context.dispatch(
-              UpdateChatStateAction(
-                messages: <Message>[message],
-              ),
-            );
+              context.dispatch(
+                UpdateChatStateAction(
+                  messages: <Message>[message],
+                ),
+              );
+            }
+
             if (store.state.chatState?.sessionId == null ||
                 store.state.chatState?.sessionId == '') {
               await store.dispatch(

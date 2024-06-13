@@ -42,15 +42,12 @@ class SearchLocationAction extends ReduxAction<AppState> {
       final LocationSearchResponse locationSearchResponse =
           LocationSearchResponse.fromJson(jsonDecode(response.body));
 
-      Location location = Location(
-        id: locationSearchResponse.location?.id,
-        name: locationSearchResponse.location?.name,
-        description: locationSearchResponse.location?.description,
-      );
+      final List<Location?> searchedLocations =
+          locationSearchResponse.locations ?? <Location?>[];
 
       dispatch(
         UpdateSearchLocationStateAction(
-          searchedLocations: <Location?>[location],
+          searchedLocations: searchedLocations,
         ),
       );
 

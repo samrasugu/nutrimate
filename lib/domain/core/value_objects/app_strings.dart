@@ -96,3 +96,7 @@ const String allSetUpDesc =
     'Now you can start exploring and get the best out of your nutrition journey';
 
 const String clearChatText = 'Clear Chat';
+
+const String diseaseNotFoundText = 'Disease with that name not found';
+const String locationNotFoundText = 'Location not found';
+const String unknownErrorText = 'An unknown error occurred';

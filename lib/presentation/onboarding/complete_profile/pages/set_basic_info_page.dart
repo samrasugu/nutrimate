@@ -48,7 +48,7 @@ class _SetBasicInfoPageState extends State<SetBasicInfoPage> {
     StoreProvider.dispatch(
       context,
       UpdateCompleteProfileStateAction(
-        initialRoute: Routes.setMealTimes,
+        initialRoute: Routes.setLocation,
         gender: _currentGender,
         age: ageController.text,
         weight: weightController.text,
@@ -56,7 +56,7 @@ class _SetBasicInfoPageState extends State<SetBasicInfoPage> {
       ),
     );
 
-    globalNavigationKey.currentState!.pushNamed(Routes.setMealTimes);
+    globalNavigationKey.currentState!.pushNamed(Routes.setLocation);
   }
 
   @override

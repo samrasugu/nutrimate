@@ -10,10 +10,14 @@ class CheckSignInAction extends ReduxAction<AppState> {
   Future<AppState?> reduce() async {
     final bool isSignedIn = state.userProfileState?.isSignedIn ?? false;
 
-    String initialRoute = Routes.onboardingIntro;
+    String? initialRoute = Routes.onboardingIntro;
 
-    if (isSignedIn) {
+    if (isSignedIn == true && state.userProfileState?.userProfile != null) {
       initialRoute = Routes.chat;
+    } else if (isSignedIn == true &&
+        state.userProfileState?.userProfile == null) {
+      initialRoute =
+          state.completeProfileState?.initialRoute ?? Routes.onboardingIntro;
     }
 
     dispatch(UpdateInitialRouteAction(initialRoute: initialRoute));

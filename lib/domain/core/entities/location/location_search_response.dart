@@ -8,7 +8,7 @@ part 'location_search_response.g.dart';
 class LocationSearchResponse with _$LocationSearchResponse {
   factory LocationSearchResponse({
     @JsonKey(name: 'message') String? message,
-    @JsonKey(name: 'location') Location? location,
+    @JsonKey(name: 'locations') List<Location?>? locations,
   }) = _LocationSearchResponse;
 
   factory LocationSearchResponse.fromJson(Map<String, dynamic> json) =>
@@ -16,6 +16,6 @@ class LocationSearchResponse with _$LocationSearchResponse {
 
   factory LocationSearchResponse.initial() => LocationSearchResponse(
         message: '',
-        location: Location.initial(),
+        locations: <Location?>[Location.initial()],
       );
 }

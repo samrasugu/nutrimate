@@ -83,8 +83,8 @@ class RouteGenerator {
           settings: const RouteSettings(name: 'Complete Profile Success Page'),
         );
       default:
-        return MaterialPageRoute<LoginPage>(
-          builder: (_) => const LoginPage(),
+        return MaterialPageRoute<OnboardingIntroPage>(
+          builder: (_) => const OnboardingIntroPage(),
           settings: const RouteSettings(name: 'Login Page'),
         );
     }

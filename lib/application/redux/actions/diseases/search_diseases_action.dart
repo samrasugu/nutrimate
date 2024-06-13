@@ -7,6 +7,7 @@ import 'package:nutrimate/application/redux/flags/flags.dart';
 import 'package:nutrimate/application/redux/states/app_state.dart';
 import 'package:nutrimate/domain/core/entities/diseases/disease.dart';
 import 'package:nutrimate/domain/core/entities/diseases/disease_search_response.dart';
+import 'package:nutrimate/domain/core/value_objects/app_strings.dart';
 import 'package:nutrimate/infrastructure/endpoints.dart';
 
 class SearchDiseasesAction extends ReduxAction<AppState> {
@@ -44,25 +45,18 @@ class SearchDiseasesAction extends ReduxAction<AppState> {
       final DiseaseSearchResponse diseaseSearchResponse =
           DiseaseSearchResponse.fromJson(jsonDecode(response.body));
 
-      Disease disease = Disease(
-        id: diseaseSearchResponse.disease?.id,
-        name: diseaseSearchResponse.disease?.name,
-        description: diseaseSearchResponse.disease?.description,
-      );
+      final List<Disease?> searchedDiseases =
+          diseaseSearchResponse.diseases ?? <Disease?>[];
 
       dispatch(
         UpdateSearchDiseasesStateAction(
-          searchedDiseases: <Disease?>[disease],
+          searchedDiseases: searchedDiseases,
         ),
       );
-
-      return state.copyWith(
-        miscState: state.miscState?.copyWith(
-          searchDiseasesState: state.miscState?.searchDiseasesState?.copyWith(
-            searchedDiseases: <Disease?>[disease],
-          ),
-        ),
-      );
+    } else if (response.statusCode == 404) {
+      throw const UserException(diseaseNotFoundText);
+    } else {
+      throw const UserException(unknownErrorText);
     }
 
     return null;

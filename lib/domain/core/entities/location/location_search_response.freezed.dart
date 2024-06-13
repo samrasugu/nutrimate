@@ -23,8 +23,8 @@ LocationSearchResponse _$LocationSearchResponseFromJson(
 mixin _$LocationSearchResponse {
   @JsonKey(name: 'message')
   String? get message => throw _privateConstructorUsedError;
-  @JsonKey(name: 'location')
-  Location? get location => throw _privateConstructorUsedError;
+  @JsonKey(name: 'locations')
+  List<Location?>? get locations => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -40,9 +40,7 @@ abstract class $LocationSearchResponseCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: 'message') String? message,
-      @JsonKey(name: 'location') Location? location});
-
-  $LocationCopyWith<$Res>? get location;
+      @JsonKey(name: 'locations') List<Location?>? locations});
 }
 
 /// @nodoc
@@ -60,30 +58,18 @@ class _$LocationSearchResponseCopyWithImpl<$Res,
   @override
   $Res call({
     Object? message = freezed,
-    Object? location = freezed,
+    Object? locations = freezed,
   }) {
     return _then(_value.copyWith(
       message: freezed == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String?,
-      location: freezed == location
-          ? _value.location
-          : location // ignore: cast_nullable_to_non_nullable
-              as Location?,
+      locations: freezed == locations
+          ? _value.locations
+          : locations // ignore: cast_nullable_to_non_nullable
+              as List<Location?>?,
     ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $LocationCopyWith<$Res>? get location {
-    if (_value.location == null) {
-      return null;
-    }
-
-    return $LocationCopyWith<$Res>(_value.location!, (value) {
-      return _then(_value.copyWith(location: value) as $Val);
-    });
   }
 }
 
@@ -98,10 +84,7 @@ abstract class _$$LocationSearchResponseImplCopyWith<$Res>
   @useResult
   $Res call(
       {@JsonKey(name: 'message') String? message,
-      @JsonKey(name: 'location') Location? location});
-
-  @override
-  $LocationCopyWith<$Res>? get location;
+      @JsonKey(name: 'locations') List<Location?>? locations});
 }
 
 /// @nodoc
@@ -118,17 +101,17 @@ class __$$LocationSearchResponseImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? message = freezed,
-    Object? location = freezed,
+    Object? locations = freezed,
   }) {
     return _then(_$LocationSearchResponseImpl(
       message: freezed == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String?,
-      location: freezed == location
-          ? _value.location
-          : location // ignore: cast_nullable_to_non_nullable
-              as Location?,
+      locations: freezed == locations
+          ? _value._locations
+          : locations // ignore: cast_nullable_to_non_nullable
+              as List<Location?>?,
     ));
   }
 }
@@ -138,7 +121,8 @@ class __$$LocationSearchResponseImplCopyWithImpl<$Res>
 class _$LocationSearchResponseImpl implements _LocationSearchResponse {
   _$LocationSearchResponseImpl(
       {@JsonKey(name: 'message') this.message,
-      @JsonKey(name: 'location') this.location});
+      @JsonKey(name: 'locations') final List<Location?>? locations})
+      : _locations = locations;
 
   factory _$LocationSearchResponseImpl.fromJson(Map<String, dynamic> json) =>
       _$$LocationSearchResponseImplFromJson(json);
@@ -146,13 +130,20 @@ class _$LocationSearchResponseImpl implements _LocationSearchResponse {
   @override
   @JsonKey(name: 'message')
   final String? message;
+  final List<Location?>? _locations;
   @override
-  @JsonKey(name: 'location')
-  final Location? location;
+  @JsonKey(name: 'locations')
+  List<Location?>? get locations {
+    final value = _locations;
+    if (value == null) return null;
+    if (_locations is EqualUnmodifiableListView) return _locations;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
 
   @override
   String toString() {
-    return 'LocationSearchResponse(message: $message, location: $location)';
+    return 'LocationSearchResponse(message: $message, locations: $locations)';
   }
 
   @override
@@ -161,13 +152,14 @@ class _$LocationSearchResponseImpl implements _LocationSearchResponse {
         (other.runtimeType == runtimeType &&
             other is _$LocationSearchResponseImpl &&
             (identical(other.message, message) || other.message == message) &&
-            (identical(other.location, location) ||
-                other.location == location));
+            const DeepCollectionEquality()
+                .equals(other._locations, _locations));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, message, location);
+  int get hashCode => Object.hash(
+      runtimeType, message, const DeepCollectionEquality().hash(_locations));
 
   @JsonKey(ignore: true)
   @override
@@ -187,7 +179,7 @@ class _$LocationSearchResponseImpl implements _LocationSearchResponse {
 abstract class _LocationSearchResponse implements LocationSearchResponse {
   factory _LocationSearchResponse(
           {@JsonKey(name: 'message') final String? message,
-          @JsonKey(name: 'location') final Location? location}) =
+          @JsonKey(name: 'locations') final List<Location?>? locations}) =
       _$LocationSearchResponseImpl;
 
   factory _LocationSearchResponse.fromJson(Map<String, dynamic> json) =
@@ -197,8 +189,8 @@ abstract class _LocationSearchResponse implements LocationSearchResponse {
   @JsonKey(name: 'message')
   String? get message;
   @override
-  @JsonKey(name: 'location')
-  Location? get location;
+  @JsonKey(name: 'locations')
+  List<Location?>? get locations;
   @override
   @JsonKey(ignore: true)
   _$$LocationSearchResponseImplCopyWith<_$LocationSearchResponseImpl>

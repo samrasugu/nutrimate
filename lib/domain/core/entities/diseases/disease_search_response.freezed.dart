@@ -23,8 +23,8 @@ DiseaseSearchResponse _$DiseaseSearchResponseFromJson(
 mixin _$DiseaseSearchResponse {
   @JsonKey(name: 'message')
   String? get message => throw _privateConstructorUsedError;
-  @JsonKey(name: 'disease')
-  Disease? get disease => throw _privateConstructorUsedError;
+  @JsonKey(name: 'diseases')
+  List<Disease?>? get diseases => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -40,9 +40,7 @@ abstract class $DiseaseSearchResponseCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: 'message') String? message,
-      @JsonKey(name: 'disease') Disease? disease});
-
-  $DiseaseCopyWith<$Res>? get disease;
+      @JsonKey(name: 'diseases') List<Disease?>? diseases});
 }
 
 /// @nodoc
@@ -60,30 +58,18 @@ class _$DiseaseSearchResponseCopyWithImpl<$Res,
   @override
   $Res call({
     Object? message = freezed,
-    Object? disease = freezed,
+    Object? diseases = freezed,
   }) {
     return _then(_value.copyWith(
       message: freezed == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String?,
-      disease: freezed == disease
-          ? _value.disease
-          : disease // ignore: cast_nullable_to_non_nullable
-              as Disease?,
+      diseases: freezed == diseases
+          ? _value.diseases
+          : diseases // ignore: cast_nullable_to_non_nullable
+              as List<Disease?>?,
     ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $DiseaseCopyWith<$Res>? get disease {
-    if (_value.disease == null) {
-      return null;
-    }
-
-    return $DiseaseCopyWith<$Res>(_value.disease!, (value) {
-      return _then(_value.copyWith(disease: value) as $Val);
-    });
   }
 }
 
@@ -98,10 +84,7 @@ abstract class _$$DiseaseSearchResponseImplCopyWith<$Res>
   @useResult
   $Res call(
       {@JsonKey(name: 'message') String? message,
-      @JsonKey(name: 'disease') Disease? disease});
-
-  @override
-  $DiseaseCopyWith<$Res>? get disease;
+      @JsonKey(name: 'diseases') List<Disease?>? diseases});
 }
 
 /// @nodoc
@@ -117,17 +100,17 @@ class __$$DiseaseSearchResponseImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? message = freezed,
-    Object? disease = freezed,
+    Object? diseases = freezed,
   }) {
     return _then(_$DiseaseSearchResponseImpl(
       message: freezed == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String?,
-      disease: freezed == disease
-          ? _value.disease
-          : disease // ignore: cast_nullable_to_non_nullable
-              as Disease?,
+      diseases: freezed == diseases
+          ? _value._diseases
+          : diseases // ignore: cast_nullable_to_non_nullable
+              as List<Disease?>?,
     ));
   }
 }
@@ -137,7 +120,8 @@ class __$$DiseaseSearchResponseImplCopyWithImpl<$Res>
 class _$DiseaseSearchResponseImpl implements _DiseaseSearchResponse {
   _$DiseaseSearchResponseImpl(
       {@JsonKey(name: 'message') this.message,
-      @JsonKey(name: 'disease') this.disease});
+      @JsonKey(name: 'diseases') final List<Disease?>? diseases})
+      : _diseases = diseases;
 
   factory _$DiseaseSearchResponseImpl.fromJson(Map<String, dynamic> json) =>
       _$$DiseaseSearchResponseImplFromJson(json);
@@ -145,13 +129,20 @@ class _$DiseaseSearchResponseImpl implements _DiseaseSearchResponse {
   @override
   @JsonKey(name: 'message')
   final String? message;
+  final List<Disease?>? _diseases;
   @override
-  @JsonKey(name: 'disease')
-  final Disease? disease;
+  @JsonKey(name: 'diseases')
+  List<Disease?>? get diseases {
+    final value = _diseases;
+    if (value == null) return null;
+    if (_diseases is EqualUnmodifiableListView) return _diseases;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
 
   @override
   String toString() {
-    return 'DiseaseSearchResponse(message: $message, disease: $disease)';
+    return 'DiseaseSearchResponse(message: $message, diseases: $diseases)';
   }
 
   @override
@@ -160,12 +151,13 @@ class _$DiseaseSearchResponseImpl implements _DiseaseSearchResponse {
         (other.runtimeType == runtimeType &&
             other is _$DiseaseSearchResponseImpl &&
             (identical(other.message, message) || other.message == message) &&
-            (identical(other.disease, disease) || other.disease == disease));
+            const DeepCollectionEquality().equals(other._diseases, _diseases));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, message, disease);
+  int get hashCode => Object.hash(
+      runtimeType, message, const DeepCollectionEquality().hash(_diseases));
 
   @JsonKey(ignore: true)
   @override
@@ -185,7 +177,7 @@ class _$DiseaseSearchResponseImpl implements _DiseaseSearchResponse {
 abstract class _DiseaseSearchResponse implements DiseaseSearchResponse {
   factory _DiseaseSearchResponse(
           {@JsonKey(name: 'message') final String? message,
-          @JsonKey(name: 'disease') final Disease? disease}) =
+          @JsonKey(name: 'diseases') final List<Disease?>? diseases}) =
       _$DiseaseSearchResponseImpl;
 
   factory _DiseaseSearchResponse.fromJson(Map<String, dynamic> json) =
@@ -195,8 +187,8 @@ abstract class _DiseaseSearchResponse implements DiseaseSearchResponse {
   @JsonKey(name: 'message')
   String? get message;
   @override
-  @JsonKey(name: 'disease')
-  Disease? get disease;
+  @JsonKey(name: 'diseases')
+  List<Disease?>? get diseases;
   @override
   @JsonKey(ignore: true)
   _$$DiseaseSearchResponseImplCopyWith<_$DiseaseSearchResponseImpl>

@@ -8,13 +8,13 @@ part 'disease_search_response.g.dart';
 class DiseaseSearchResponse with _$DiseaseSearchResponse {
   factory DiseaseSearchResponse({
     @JsonKey(name: 'message') String? message,
-    @JsonKey(name: 'disease') Disease? disease,
+    @JsonKey(name: 'diseases')List<Disease?>? diseases,
   }) = _DiseaseSearchResponse;
 
   factory DiseaseSearchResponse.fromJson(Map<String, dynamic> json) => _$DiseaseSearchResponseFromJson(json);
 
   factory DiseaseSearchResponse.initial() => DiseaseSearchResponse(
         message: '',
-        disease: Disease.initial(),
+        diseases: <Disease?>[Disease.initial()],
       );
 }

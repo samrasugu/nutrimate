@@ -10,14 +10,15 @@ _$LocationSearchResponseImpl _$$LocationSearchResponseImplFromJson(
         Map<String, dynamic> json) =>
     _$LocationSearchResponseImpl(
       message: json['message'] as String?,
-      location: json['location'] == null
-          ? null
-          : Location.fromJson(json['location'] as Map<String, dynamic>),
+      locations: (json['locations'] as List<dynamic>?)
+          ?.map((e) =>
+              e == null ? null : Location.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$$LocationSearchResponseImplToJson(
         _$LocationSearchResponseImpl instance) =>
     <String, dynamic>{
       'message': instance.message,
-      'location': instance.location,
+      'locations': instance.locations,
     };
