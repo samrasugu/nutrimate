@@ -11,7 +11,7 @@ class AppTheme {
         primary: AppColors.themeColors.primaryColor,
         secondary: AppColors.themeColors.accentColor,
         onSecondary: AppColors.themeColors.primaryDarkColor,
-      ).copyWith(background: AppColors.themeColors.backgroundColor),
+      ).copyWith(surface: AppColors.themeColors.backgroundColor),
     ).copyWith(
       pageTransitionsTheme: const PageTransitionsTheme(
         builders: <TargetPlatform, PageTransitionsBuilder>{
@@ -21,10 +21,10 @@ class AppTheme {
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ButtonStyle(
-          backgroundColor: MaterialStateProperty.all<Color>(
+          backgroundColor: WidgetStateProperty.all<Color>(
             AppColors.themeColors.primaryColor,
           ),
-          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+          shape: WidgetStateProperty.all<RoundedRectangleBorder>(
             RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(10),
             ),
