@@ -22,7 +22,7 @@ class SettingsListItem extends StatelessWidget {
       child: Container(
         width: double.infinity,
         decoration: BoxDecoration(
-          color: AppColors.lightGreyColor.withOpacity(.3),
+          color: AppColors.lightGreyColor.withValues(alpha: (0.3 * 255)),
           borderRadius: BorderRadius.circular(15),
         ),
         padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),

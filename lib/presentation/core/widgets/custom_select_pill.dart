@@ -22,7 +22,7 @@ class CustomSelectPill extends StatelessWidget {
       decoration: BoxDecoration(
         color: isSelected
             ? AppColors.whiteColor
-            : AppColors.lightGreyColor.withOpacity(.28),
+            : AppColors.lightGreyColor.withValues(alpha: (0.28 * 255)),
         borderRadius: BorderRadius.circular(25),
         border: Border.all(
           color: isSelected ? AppColors.primaryColor : AppColors.whiteColor,

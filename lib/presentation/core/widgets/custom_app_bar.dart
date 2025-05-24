@@ -31,7 +31,7 @@ class CustomAppBar extends StatelessWidget {
         decoration: BoxDecoration(
           border: Border(
             bottom: BorderSide(
-              color: AppColors.greyTextColor.withOpacity(.5),
+              color: AppColors.greyTextColor.withValues(alpha: (0.5 * 255)),
               width: (showUnderline ?? false) ? 1 : 0,
             ),
           ),

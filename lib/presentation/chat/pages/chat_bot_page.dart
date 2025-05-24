@@ -149,7 +149,8 @@ class _ChatBotPageState extends State<ChatBotPage> {
                               decoration: BoxDecoration(
                                 color: message.sender == 'user'
                                     ? AppColors.primaryColor
-                                    : AppColors.lightGreyColor.withOpacity(.5),
+                                    : AppColors.lightGreyColor
+                                        .withValues(alpha: (0.5 * 255)),
                                 borderRadius: BorderRadius.circular(20.0),
                               ),
                               padding: const EdgeInsets.all(15.0),

@@ -1,8 +1,6 @@
 import 'package:async_redux/async_redux.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:nutrimate/application/redux/actions/sign_up/sign_up_action.dart';
 import 'package:nutrimate/application/redux/flags/flags.dart';
