@@ -306,7 +306,7 @@ class _SignUpPageState extends State<SignUpPage> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
                             Text(
-                              dontHaveAnAccountText,
+                              alreadyHaveAnAccountText,
                               style: normalSize16Text(AppColors.blackColor),
                             ),
                             TextButton(
@@ -314,7 +314,7 @@ class _SignUpPageState extends State<SignUpPage> {
                                 Navigator.of(context).pushNamed(Routes.login);
                               },
                               child: Text(
-                                signUpText,
+                                signInText,
                                 style: boldSize16Text(AppColors.primaryColor),
                               ),
                             ),
