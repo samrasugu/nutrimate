@@ -4,6 +4,7 @@ const String selectOnboardingText =
 const String logInWithEmailText = 'Log in with Email';
 const String continueWithGoogleText = 'Continue with Google';
 const String dontHaveAnAccountText = 'Don\'t have an account?';
+const String alreadyHaveAnAccountText = 'Already have an account?';
 
 // sign in
 const String signInText = 'Sign In';
